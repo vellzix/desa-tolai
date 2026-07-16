@@ -69,22 +69,27 @@ export default function VillagePotentials() {
 
     return (
         <section id="potentials" className="py-10 bg-transparent">
-            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-[#121214] border border-neutral-200/90 dark:border-neutral-800/90 rounded-2xl shadow-md">
+            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-none sm:rounded-xl shadow-sm">
                 {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                        Potensi Wilayah & Kebudayaan
-                    </h2>
-                    <div className="h-1 w-20 bg-gradient-to-r from-sky-700 to-emerald-600 mx-auto mt-4 rounded-full" />
-                    <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
-                        Penopang ekonomi persawahan subur serta kekayaan keragaman adat budaya kemasyarakatan Desa Tolai.
-                    </p>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 pb-6 border-b border-neutral-200 dark:border-neutral-800">
+                    <div>
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="h-4 w-1 bg-olive-700 rounded-full" />
+                            <span className="text-[11px] font-bold text-olive-700 dark:text-gold-500 uppercase tracking-widest">Ekonomi & Budaya</span>
+                        </div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
+                            Potensi Wilayah & Kebudayaan
+                        </h2>
+                        <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+                            Penopang ekonomi persawahan subur serta kekayaan keragaman adat budaya kemasyarakatan Desa Tolai.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Subtitle - Perekonomian & Agraris */}
                 <div className="mb-10">
                     <h3 className="text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-sky-700 dark:bg-sky-500" />
+                        <span className="h-2 w-2 rounded-full bg-olive-700 dark:bg-gold-500" />
                         Komoditas & Sektor Perekonomian
                     </h3>
                     <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Sektor agraris utama penunjang kemakmuran warga.</p>
@@ -100,11 +105,11 @@ export default function VillagePotentials() {
                                 key={index}
                                 onClick={() => setSelectedPotential(isExpanded ? null : index)}
                                 className={`group relative rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50/40 dark:bg-[#121214]/40 p-6 text-left cursor-pointer transition-all duration-200 hover:shadow-sm ${
-                                    isExpanded ? 'ring-2 ring-sky-700 dark:ring-sky-500 bg-white dark:bg-[#121214]' : ''
+                                    isExpanded ? 'ring-2 ring-olive-650 dark:ring-gold-500 bg-white dark:bg-[#121214]' : ''
                                 }`}
                             >
                                 <div className="flex h-10 w-10 items-center justify-center rounded bg-slate-100 dark:bg-neutral-800 text-slate-800 dark:text-slate-200 shadow-inner mb-5">
-                                    <IconComponent className="h-5 w-5 text-sky-800 dark:text-sky-400" />
+                                    <IconComponent className="h-5 w-5 text-olive-700 dark:text-gold-500" />
                                 </div>
 
                                 <span className="inline-block px-2.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-neutral-200/50 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 mb-3">
@@ -130,7 +135,7 @@ export default function VillagePotentials() {
                                     ))}
                                 </div>
 
-                                <div className="mt-4 flex items-center gap-1 text-[11px] font-bold text-sky-800 dark:text-sky-400">
+                                <div className="mt-4 flex items-center gap-1 text-[11px] font-bold text-olive-750 dark:text-gold-500">
                                     <Eye className="h-3.5 w-3.5" />
                                     <span>{isExpanded ? 'Sembunyikan rincian' : 'Lihat data potensi'}</span>
                                 </div>
@@ -142,7 +147,7 @@ export default function VillagePotentials() {
                 {/* Subtitle - Adat & Kebudayaan */}
                 <div className="mb-10">
                     <h3 className="text-lg font-bold text-neutral-900 dark:text-white flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-slate-500" />
+                        <span className="h-2 w-2 rounded-full bg-moss-600" />
                         Adat Istiadat & Toleransi Sosial
                     </h3>
                     <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Keharmonisan kehidupan kemasyarakatan multikultural Desa Tolai.</p>
@@ -159,11 +164,11 @@ export default function VillagePotentials() {
                                 key={globalIndex}
                                 onClick={() => setSelectedPotential(isExpanded ? null : globalIndex)}
                                 className={`group relative rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50/40 dark:bg-[#121214]/40 p-6 text-left cursor-pointer transition-all duration-200 hover:shadow-sm ${
-                                    isExpanded ? 'ring-2 ring-sky-700 dark:ring-sky-500 bg-white dark:bg-[#121214]' : ''
+                                    isExpanded ? 'ring-2 ring-olive-650 dark:ring-gold-500 bg-white dark:bg-[#121214]' : ''
                                 }`}
                             >
                                 <div className="flex h-10 w-10 items-center justify-center rounded bg-slate-100 dark:bg-neutral-800 text-slate-800 dark:text-slate-200 shadow-inner mb-5">
-                                    <IconComponent className="h-5 w-5 text-sky-800 dark:text-sky-400" />
+                                    <IconComponent className="h-5 w-5 text-olive-700 dark:text-gold-500" />
                                 </div>
 
                                 <span className="inline-block px-2.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-neutral-200/50 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 mb-3">
@@ -183,13 +188,13 @@ export default function VillagePotentials() {
                                 }`}>
                                     {item.details.map((detail, idx) => (
                                         <div key={idx} className="flex items-center gap-2 text-xs text-neutral-600 dark:text-neutral-400">
-                                            <ChevronRight className="h-3.5 w-3.5 text-blue-800 shrink-0" />
+                                            <ChevronRight className="h-3.5 w-3.5 text-olive-700 shrink-0" />
                                             <span>{detail}</span>
                                         </div>
                                     ))}
                                 </div>
 
-                                <div className="mt-4 flex items-center gap-1 text-[11px] font-bold text-sky-800 dark:text-sky-400">
+                                <div className="mt-4 flex items-center gap-1 text-[11px] font-bold text-olive-750 dark:text-gold-500">
                                     <Eye className="h-3.5 w-3.5" />
                                     <span>{isExpanded ? 'Sembunyikan rincian' : 'Lihat keunikan adat'}</span>
                                 </div>

@@ -28,7 +28,7 @@ export default function VillageOfficials() {
                 'Pembinaan Hubungan Harmonis Adat & Agama',
                 'Pemberdayaan Kelembagaan Kemasyarakatan'
             ],
-            color: 'from-sky-800 to-slate-900',
+            color: 'bg-olive-800',
         },
         {
             name: 'I Gede Agus Sukayasa',
@@ -41,7 +41,7 @@ export default function VillageOfficials() {
                 'Manajemen Kearsipan & Administrasi Umum',
                 'Fasilitator Hubungan Antar Lembaga Desa'
             ],
-            color: 'from-slate-700 to-slate-900',
+            color: 'bg-moss-700',
         },
         {
             name: 'Afandi Ahmad. A',
@@ -54,7 +54,7 @@ export default function VillageOfficials() {
                 'Koordinasi Satuan Perlindungan Masyarakat (Linmas)',
                 'Pembinaan Penegakan Peraturan Desa (Perdes)'
             ],
-            color: 'from-slate-700 to-slate-900',
+            color: 'bg-moss-700',
         },
         {
             name: 'Ida Kade Bagus Merdana',
@@ -67,7 +67,7 @@ export default function VillageOfficials() {
                 'Fasilitasi Pembinaan Seni & Sanggar Adat Bali/Lokal',
                 'Pemeliharaan Infrastruktur Sosial Desa'
             ],
-            color: 'from-slate-700 to-slate-900',
+            color: 'bg-moss-700',
         },
         {
             name: 'I Ketut Wedastra',
@@ -80,7 +80,7 @@ export default function VillageOfficials() {
                 'Pembinaan Lembaga Adat & Pemberdayaan Perempuan',
                 'Penyuluhan Program Kesehatan Lingkungan Desa'
             ],
-            color: 'from-slate-700 to-slate-900',
+            color: 'bg-moss-700',
         },
         {
             name: 'I Nyoman Agus Yudianto',
@@ -93,7 +93,7 @@ export default function VillageOfficials() {
                 'Penyediaan Sarana Prasarana Operasional Kantor',
                 'Dokumentasi & Publikasi Humas Kegiatan Resmi'
             ],
-            color: 'from-slate-700 to-slate-900',
+            color: 'bg-moss-700',
         },
         {
             name: 'I Made Ardika',
@@ -106,7 +106,7 @@ export default function VillageOfficials() {
                 'Administrasi Pembayaran Belanja Modal & Insentif',
                 'Penyetoran Pajak PPN/PPH atas Transaksi Desa'
             ],
-            color: 'from-slate-700 to-slate-900',
+            color: 'bg-moss-700',
         },
         {
             name: 'I Wayan Aget',
@@ -119,49 +119,58 @@ export default function VillageOfficials() {
                 'Evaluasi & Monitoring Realisasi Pembangunan',
                 'Penyusunan Laporan Keterangan LPPD/LKPJ Desa'
             ],
-            color: 'from-slate-700 to-slate-900',
+            color: 'bg-moss-700',
         }
     ];
 
     return (
         <section id="officials" className="py-10 bg-transparent">
-            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-[#121214] border border-neutral-200/90 dark:border-neutral-800/90 rounded-2xl shadow-md">
+            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-none sm:rounded-xl shadow-sm">
                 {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                        Aparatur Pemerintah Desa
-                    </h2>
-                    <div className="h-1 w-20 bg-gradient-to-r from-sky-700 to-emerald-600 mx-auto mt-4 rounded-full" />
-                    <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
-                        Jajaran perangkat pelaksana pelayanan publik administrasi Desa Tolai.
-                    </p>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 pb-6 border-b border-neutral-200 dark:border-neutral-800">
+                    <div>
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="h-4 w-1 bg-olive-700 rounded-full" />
+                            <span className="text-[11px] font-bold text-olive-700 dark:text-gold-500 uppercase tracking-widest">Struktur Organisasi</span>
+                        </div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
+                            Aparatur Pemerintah Desa
+                        </h2>
+                        <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+                            Jajaran perangkat pelaksana pelayanan publik administrasi Desa Tolai.
+                        </p>
+                    </div>
+                    <div className="text-xs text-neutral-400 shrink-0 flex items-center gap-1.5">
+                        <Landmark className="h-3.5 w-3.5 text-olive-700" />
+                        <span>Periode Jabatan 2021–2027</span>
+                    </div>
                 </div>
 
                 {/* Officials Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     {officials.map((official, idx) => (
                         <div
                             key={idx}
                             onClick={() => setSelectedOfficial(official)}
-                            className="group flex flex-col items-center text-center p-5 bg-neutral-50/40 dark:bg-[#121214]/40 border border-neutral-200 dark:border-neutral-800 rounded-lg cursor-pointer hover:shadow-sm transition-all duration-200"
+                            className="group flex flex-col items-center text-center p-4 bg-neutral-50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-lg cursor-pointer hover:border-olive-300 dark:hover:border-olive-800 hover:shadow-sm transition-all duration-200"
                         >
                             {/* Avatar */}
-                            <div className={`h-16 w-16 rounded-full overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-gradient-to-tr ${official.color} text-white flex items-center justify-center font-bold text-base shadow-sm mb-4`}>
+                            <div className={`h-14 w-14 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-700 ${official.color} text-white flex items-center justify-center font-bold text-sm shadow-sm mb-3`}>
                                 {official.photoLabel}
                             </div>
 
                             {/* Name & Role */}
-                            <h4 className="text-[11px] font-extrabold text-neutral-950 dark:text-white line-clamp-2 leading-snug">
+                            <h4 className="text-[11px] font-bold text-neutral-900 dark:text-white line-clamp-2 leading-snug">
                                 {official.name}
                             </h4>
-                            <p className="text-[9px] font-bold text-sky-800 dark:text-sky-400 uppercase tracking-wider mt-1">
+                            <p className="text-[10px] text-olive-700 dark:text-gold-500 font-semibold mt-1 leading-tight">
                                 {official.role}
                             </p>
 
                             {/* Tap for detail text */}
-                            <span className="text-[9px] text-neutral-400 mt-4 group-hover:underline flex items-center gap-0.5">
+                            <span className="text-[10px] text-neutral-400 mt-3 flex items-center gap-1 group-hover:text-olive-700 transition-colors">
                                 <BookOpen className="h-3 w-3" />
-                                Rincian tugas
+                                Lihat tugas
                             </span>
                         </div>
                     ))}
@@ -174,14 +183,14 @@ export default function VillageOfficials() {
                     <DialogContent className="max-w-md bg-white dark:bg-[#121214] border border-neutral-200 dark:border-neutral-800 text-neutral-900 dark:text-white rounded-lg shadow-xl p-6">
                         <DialogHeader className="flex flex-col items-center text-center">
                             {/* Avatar representation */}
-                            <div className={`h-20 w-20 rounded-full overflow-hidden border border-neutral-200 bg-gradient-to-tr ${selectedOfficial.color} text-white flex items-center justify-center font-bold text-xl shadow-md mb-4`}>
+                            <div className={`h-20 w-20 rounded-full overflow-hidden border border-neutral-200 ${selectedOfficial.color} text-white flex items-center justify-center font-bold text-xl shadow-md mb-4`}>
                                 {selectedOfficial.photoLabel}
                             </div>
 
                             <DialogTitle className="text-base font-bold text-neutral-950 dark:text-white leading-tight">
                                 {selectedOfficial.name}
                             </DialogTitle>
-                            <DialogDescription className="text-xs font-bold text-sky-800 dark:text-sky-400 uppercase tracking-widest mt-1">
+                            <DialogDescription className="text-xs font-bold text-olive-700 dark:text-gold-500 uppercase tracking-widest mt-1">
                                 {selectedOfficial.role}
                             </DialogDescription>
                             {selectedOfficial.nip && (
@@ -193,7 +202,7 @@ export default function VillageOfficials() {
                         <div className="mt-6 space-y-4 text-xs">
                             <div>
                                 <h5 className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-500 mb-1 flex items-center gap-1">
-                                    <Star className="h-3.5 w-3.5 text-sky-800" />
+                                    <Star className="h-3.5 w-3.5 text-gold-500" />
                                     Deskripsi Jabatan
                                 </h5>
                                 <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-justify">
@@ -203,13 +212,13 @@ export default function VillageOfficials() {
 
                             <div className="border-t border-neutral-100 dark:border-neutral-800 pt-4">
                                 <h5 className="text-[10px] font-extrabold uppercase tracking-wider text-neutral-500 mb-2 flex items-center gap-1">
-                                    <ShieldCheck className="h-3.5 w-3.5 text-sky-800" />
+                                    <ShieldCheck className="h-3.5 w-3.5 text-gold-500" />
                                     Tanggung Jawab Utama
                                 </h5>
                                 <ul className="space-y-1.5 text-neutral-600 dark:text-neutral-300">
                                     {selectedOfficial.duty.map((task, idx) => (
                                         <li key={idx} className="flex items-start gap-1.5">
-                                            <span className="h-1.5 w-1.5 bg-sky-800 rounded-full mt-1.5 shrink-0" />
+                                            <span className="h-1.5 w-1.5 bg-olive-700 rounded-full mt-1.5 shrink-0" />
                                             <span>{task}</span>
                                         </li>
                                     ))}

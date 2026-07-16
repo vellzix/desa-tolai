@@ -97,16 +97,21 @@ export default function VillageNews() {
 
     return (
         <section id="news" className="py-10 bg-transparent">
-            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-[#121214] border border-neutral-200/90 dark:border-neutral-800/90 rounded-2xl shadow-md">
+            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-none sm:rounded-xl shadow-sm">
                 {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                        Kabar & Kegiatan Desa
-                    </h2>
-                    <div className="h-1 w-20 bg-gradient-to-r from-sky-700 to-emerald-600 mx-auto mt-4 rounded-full" />
-                    <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
-                        Pantau publikasi berita pembangunan, pengumuman administratif, serta kalender agenda kemasyarakatan Desa Tolai.
-                    </p>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 pb-6 border-b border-neutral-200 dark:border-neutral-800">
+                    <div>
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="h-4 w-1 bg-olive-700 rounded-full" />
+                            <span className="text-[11px] font-bold text-olive-700 dark:text-gold-500 uppercase tracking-widest">Informasi & Pengumuman</span>
+                        </div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
+                            Kabar & Kegiatan Desa
+                        </h2>
+                        <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+                            Pantau berita pembangunan, pengumuman administratif, serta kalender agenda Desa Tolai.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Filter and Search Bar */}
@@ -121,7 +126,7 @@ export default function VillageNews() {
                                     onClick={() => setSelectedCategory(cat)}
                                     className={`flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded border transition-all cursor-pointer shrink-0 ${
                                         selectedCategory === cat
-                                            ? 'bg-sky-800 border-sky-850 text-white shadow-sm'
+                                            ? 'bg-olive-700 border-olive-800 text-white shadow-sm'
                                             : 'bg-neutral-50 dark:bg-neutral-900 border-neutral-200 dark:border-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800'
                                     }`}
                                 >
@@ -162,7 +167,7 @@ export default function VillageNews() {
                                                     item.category === 'berita'
                                                         ? 'bg-neutral-100 border-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-300'
                                                         : item.category === 'pengumuman'
-                                                        ? 'bg-blue-50/50 border-blue-800/10 text-sky-800 dark:bg-blue-950/20 dark:border-blue-900/30 dark:text-blue-300'
+                                                        ? 'bg-olive-50/50 border-olive-800/10 text-olive-750 dark:bg-olive-950/20 dark:border-olive-900/30 dark:text-gold-500'
                                                         : 'bg-neutral-50 border-neutral-200 text-neutral-700 dark:bg-neutral-900 dark:border-neutral-800 dark:text-neutral-400'
                                                 }`}
                                             >
@@ -175,7 +180,7 @@ export default function VillageNews() {
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-sm font-bold text-neutral-900 dark:text-white leading-snug group-hover:text-sky-800 dark:group-hover:text-sky-400 transition-colors mb-3">
+                                        <h3 className="text-sm font-bold text-neutral-900 dark:text-white leading-snug group-hover:text-olive-700 dark:group-hover:text-gold-500 transition-colors mb-3">
                                             {item.title}
                                         </h3>
 
@@ -206,7 +211,7 @@ export default function VillageNews() {
                                                 <Eye className="h-3.5 w-3.5" />
                                                 {item.views} dibaca
                                             </span>
-                                            <button className="flex items-center gap-0.5 text-sky-800 dark:text-sky-400 font-bold hover:underline cursor-pointer">
+                                            <button className="flex items-center gap-0.5 text-olive-700 dark:text-gold-500 font-bold hover:underline cursor-pointer">
                                                 Baca Detail
                                                 <ArrowRight className="h-3 w-3" />
                                             </button>

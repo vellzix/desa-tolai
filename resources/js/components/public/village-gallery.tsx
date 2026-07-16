@@ -67,23 +67,28 @@ export default function VillageGallery() {
 
     return (
         <section id="gallery" className="py-10 bg-transparent">
-            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-[#121214] border border-neutral-200/90 dark:border-neutral-800/90 rounded-2xl shadow-md">
+            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-none sm:rounded-xl shadow-sm">
                 {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
-                        Galeri & Peta Wilayah
-                    </h2>
-                    <div className="h-1 w-20 bg-gradient-to-r from-sky-700 to-emerald-600 mx-auto mt-4 rounded-full" />
-                    <p className="mt-4 text-sm text-neutral-600 dark:text-neutral-400">
-                        Dokumentasi visual kebudayaan, pembangunan desa, serta letak geografis wilayah administratif Desa Tolai.
-                    </p>
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 pb-6 border-b border-neutral-200 dark:border-neutral-800">
+                    <div>
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="h-4 w-1 bg-olive-700 rounded-full" />
+                            <span className="text-[11px] font-bold text-olive-700 dark:text-gold-500 uppercase tracking-widest">Dokumentasi & Wilayah</span>
+                        </div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-white tracking-tight">
+                            Galeri & Peta Wilayah
+                        </h2>
+                        <p className="mt-1.5 text-sm text-neutral-500 dark:text-neutral-400">
+                            Dokumentasi visual kebudayaan, pembangunan desa, serta letak geografis wilayah Desa Tolai.
+                        </p>
+                    </div>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                     {/* Left Column: Gallery Grid */}
                     <div className="lg:col-span-7 flex flex-col justify-between">
                         <div className="flex items-center gap-2 mb-6 px-1">
-                            <Camera className="h-5 w-5 text-sky-800 dark:text-sky-400" />
+                            <Camera className="h-5 w-5 text-olive-700 dark:text-gold-500" />
                             <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Galeri Kegiatan Desa</h3>
                         </div>
 
@@ -127,7 +132,7 @@ export default function VillageGallery() {
                     {/* Right Column: Geographic Map */}
                     <div className="lg:col-span-5 flex flex-col justify-between mt-10 lg:mt-0">
                         <div className="flex items-center gap-2 mb-6 px-1">
-                            <MapPin className="h-5 w-5 text-sky-800 dark:text-sky-400" />
+                            <MapPin className="h-5 w-5 text-olive-700 dark:text-gold-500" />
                             <h3 className="text-lg font-bold text-neutral-900 dark:text-white">Peta Administratif Desa Tolai</h3>
                         </div>
 
@@ -159,7 +164,7 @@ export default function VillageGallery() {
                                     href="https://www.openstreetmap.org/#map=13/-0.9780/120.3700"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1 text-[10px] font-bold text-sky-800 dark:text-sky-400 hover:underline"
+                                    className="flex items-center gap-1 text-[10px] font-bold text-olive-750 dark:text-gold-500 hover:underline"
                                 >
                                     Buka Peta Besar
                                     <ExternalLink className="h-3 w-3" />
@@ -182,7 +187,7 @@ export default function VillageGallery() {
                                 className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent" />
-                            <span className="absolute top-4 left-4 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest bg-sky-800 text-white rounded">
+                            <span className="absolute top-4 left-4 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest bg-olive-700 text-white rounded">
                                 {selectedImage.category}
                             </span>
                             
@@ -199,11 +204,11 @@ export default function VillageGallery() {
                         <div className="p-6 sm:p-8 space-y-4">
                             <div className="flex items-center justify-between text-xs text-neutral-500">
                                 <span className="flex items-center gap-1">
-                                    <MapPin className="h-3.5 w-3.5 text-sky-800" />
+                                    <MapPin className="h-3.5 w-3.5 text-gold-500" />
                                     Desa Tolai, Kec. Torue
                                 </span>
                                 <span className="flex items-center gap-1">
-                                    <Calendar className="h-3.5 w-3.5 text-sky-800" />
+                                    <Calendar className="h-3.5 w-3.5 text-gold-500" />
                                     Dokumentasi: {selectedImage.date}
                                 </span>
                             </div>

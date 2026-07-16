@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { Landmark, Mail, Phone, MapPin, ExternalLink, ShieldCheck, Heart } from 'lucide-react';
+import { Landmark, Mail, Phone, MapPin, ExternalLink, Heart, Shield } from 'lucide-react';
 
 export default function VillageFooter() {
     const currentYear = new Date().getFullYear();
@@ -8,16 +8,8 @@ export default function VillageFooter() {
         { label: 'Beranda', href: '/' },
         { label: 'Tentang & Sejarah', href: '/tentang' },
         { label: 'Potensi & Budaya', href: '/potensi' },
-        { label: 'Layanan Mandiri', href: '/layanan' },
         { label: 'Kabar Desa', href: '/kabar' },
         { label: 'Galeri & Peta', href: '/galeri' },
-    ];
-
-    const services = [
-        { label: 'SK Domisili (SKD)' },
-        { label: 'SK Usaha (SKU)' },
-        { label: 'SK Tidak Mampu (SKTM)' },
-        { label: 'Pelayanan Administrasi Umum' },
     ];
 
     const organizations = [
@@ -27,65 +19,68 @@ export default function VillageFooter() {
         { name: 'Kelompok Subak Merta Sari' },
     ];
 
-    const scrollToSection = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
-        <footer className="bg-neutral-950 text-neutral-400 pt-16 pb-8 border-t border-neutral-900">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                {/* Top Section: Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
-                    {/* Brand column */}
-                    <div className="lg:col-span-4 space-y-4">
-                        <div className="flex items-center gap-3">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-tr from-sky-700 to-emerald-600 text-white shadow-sm">
-                                <Landmark className="h-5.5 w-5.5" />
-                            </div>
-                            <div className="flex flex-col text-left">
-                                <span className="text-base font-bold tracking-tight text-white">
-                                    Pemerintah Desa Tolai
-                                </span>
-                                <span className="text-[10px] font-medium text-neutral-500 uppercase tracking-widest leading-none">
-                                    Kabupaten Parigi Moutong
-                                </span>
-                            </div>
+        <footer className="bg-neutral-950 text-neutral-400 border-t border-neutral-900">
+            {/* Government Identity Strip */}
+            <div className="bg-olive-900/40 border-b border-olive-900/30 py-4 px-4">
+                <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-olive-700 text-white">
+                            <Landmark className="h-5 w-5" />
                         </div>
-                        <p className="text-xs text-neutral-500 leading-relaxed text-justify">
+                        <div>
+                            <p className="text-white text-sm font-bold">Pemerintah Desa Tolai</p>
+                            <p className="text-olive-300 text-[11px]">Kecamatan Torue · Kabupaten Parigi Moutong · Sulawesi Tengah</p>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[11px] text-olive-300">
+                        <Shield className="h-3.5 w-3.5" />
+                        <span>Website Resmi Pemerintah Desa</span>
+                    </div>
+                </div>
+            </div>
+
+            {/* Main Footer Content */}
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-10">
+                    
+                    {/* Contact column */}
+                    <div className="lg:col-span-5 space-y-4">
+                        <h4 className="text-white text-xs font-bold uppercase tracking-widest pb-2 border-b border-neutral-800">
+                            Kontak & Alamat
+                        </h4>
+                        <p className="text-xs text-neutral-500 leading-relaxed">
                             Website profil resmi kependudukan dan tata pamong Desa Tolai, Kecamatan Torue, Kabupaten Parigi Moutong, Sulawesi Tengah.
                         </p>
-                        {/* Contact details */}
-                        <div className="space-y-2 pt-2 text-xs">
-                            <div className="flex items-start gap-2.5">
-                                <MapPin className="h-4 w-4 text-sky-500 shrink-0 mt-0.5" />
-                                <span>Jl. Trans Sulawesi No. 12, Desa Tolai, Kecamatan Torue, Kabupaten Parigi Moutong, Sulawesi Tengah 94473</span>
+                        <div className="space-y-2.5 text-xs">
+                            <div className="flex items-start gap-3">
+                                <MapPin className="h-3.5 w-3.5 text-gold-500 shrink-0 mt-0.5" />
+                                <span className="leading-relaxed">Jl. Trans Sulawesi No. 12, Desa Tolai, Kecamatan Torue, Kabupaten Parigi Moutong, Sulawesi Tengah 94473</span>
                             </div>
-                            <div className="flex items-center gap-2.5">
-                                <Phone className="h-4 w-4 text-sky-500 shrink-0" />
+                            <div className="flex items-center gap-3">
+                                <Phone className="h-3.5 w-3.5 text-gold-500 shrink-0" />
                                 <span>+62 822-9111-3320</span>
                             </div>
-                            <div className="flex items-center gap-2.5">
-                                <Mail className="h-4 w-4 text-sky-500 shrink-0" />
+                            <div className="flex items-center gap-3">
+                                <Mail className="h-3.5 w-3.5 text-gold-500 shrink-0" />
                                 <span>kontak@desatolai.go.id</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Quick links column */}
-                    <div className="lg:col-span-2 space-y-4">
-                        <h4 className="text-white text-xs font-bold uppercase tracking-widest border-l-2 border-sky-700 pl-2">
-                            Tautan Cepat
+                    <div className="lg:col-span-3 space-y-4">
+                        <h4 className="text-white text-xs font-bold uppercase tracking-widest pb-2 border-b border-neutral-800">
+                            Navigasi
                         </h4>
-                        <ul className="space-y-2.5 text-xs">
+                        <ul className="space-y-2 text-xs">
                             {quickLinks.map((link) => (
                                 <li key={link.label}>
                                     <Link
                                         href={link.href}
-                                        className="hover:text-white transition-colors cursor-pointer text-left text-neutral-400"
+                                        className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
                                     >
+                                        <span className="h-px w-2 bg-olive-700 rounded-full" />
                                         {link.label}
                                     </Link>
                                 </li>
@@ -93,51 +88,33 @@ export default function VillageFooter() {
                         </ul>
                     </div>
 
-                    {/* Services column */}
-                    <div className="lg:col-span-3 space-y-4">
-                        <h4 className="text-white text-xs font-bold uppercase tracking-widest border-l-2 border-sky-700 pl-2">
-                            Layanan Surat
-                        </h4>
-                        <ul className="space-y-2.5 text-xs">
-                            {services.map((service) => (
-                                <li key={service.label} className="flex items-center gap-1.5 text-neutral-400">
-                                    <span className="h-1 w-1 bg-neutral-800 rounded-full" />
-                                    <span>{service.label}</span>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className="pt-2">
-                            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-sky-500 bg-sky-500/5 px-2.5 py-1 rounded border border-sky-900/30">
-                                <ShieldCheck className="h-3.5 w-3.5" />
-                                Layanan Terverifikasi SSL
-                            </span>
-                        </div>
-                    </div>
-
                     {/* Institutions column */}
-                    <div className="lg:col-span-3 space-y-4">
-                        <h4 className="text-white text-xs font-bold uppercase tracking-widest border-l-2 border-sky-700 pl-2">
+                    <div className="lg:col-span-4 space-y-4">
+                        <h4 className="text-white text-xs font-bold uppercase tracking-widest pb-2 border-b border-neutral-800">
                             Lembaga Desa
                         </h4>
-                        <ul className="space-y-2.5 text-xs">
+                        <ul className="space-y-2 text-xs">
                             {organizations.map((org) => (
                                 <li key={org.name} className="flex items-center justify-between text-neutral-400 hover:text-white transition-colors">
-                                    <span>{org.name}</span>
-                                    <ExternalLink className="h-3 w-3 text-neutral-800 shrink-0" />
+                                    <span className="flex items-center gap-1.5">
+                                        <span className="h-px w-2 bg-olive-700 rounded-full" />
+                                        {org.name}
+                                    </span>
+                                    <ExternalLink className="h-3 w-3 text-neutral-700 shrink-0" />
                                 </li>
                             ))}
                         </ul>
                     </div>
                 </div>
 
-                {/* Bottom Section: Divider & Copyright */}
-                <div className="border-t border-neutral-900 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
-                    <p className="text-center md:text-left">
-                        &copy; {currentYear} Pemerintah Desa Tolai, Parigi Moutong. Hak Cipta Dilindungi Undang-Undang.
+                {/* Bottom Section */}
+                <div className="border-t border-neutral-900 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-neutral-600">
+                    <p>
+                        &copy; {currentYear} Pemerintah Desa Tolai, Parigi Moutong. Hak Cipta Dilindungi.
                     </p>
-                    <p className="flex items-center gap-1 text-center md:text-right">
+                    <p className="flex items-center gap-1.5">
                         <span>Dibuat dengan</span>
-                        <Heart className="h-3 w-3 text-slate-600 fill-current" />
+                        <Heart className="h-3 w-3 text-neutral-700 fill-current" />
                         <span>untuk ketertiban & kesejahteraan masyarakat.</span>
                     </p>
                 </div>
