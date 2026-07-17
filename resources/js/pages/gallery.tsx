@@ -2,7 +2,11 @@ import { Head } from '@inertiajs/react';
 import PublicLayout from '@/layouts/public-layout';
 import VillageGallery from '@/components/public/village-gallery';
 
-export default function GalleryPage() {
+interface GalleryPageProps {
+    galleries: any[];
+}
+
+export default function GalleryPage({ galleries }: GalleryPageProps) {
     return (
         <PublicLayout>
             <Head>
@@ -11,7 +15,7 @@ export default function GalleryPage() {
             </Head>
 
             <div className="pt-24 pb-16">
-                <VillageGallery />
+                <VillageGallery galleries={galleries} />
             </div>
         </PublicLayout>
     );

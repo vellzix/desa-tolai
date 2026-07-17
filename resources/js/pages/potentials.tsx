@@ -2,7 +2,11 @@ import { Head } from '@inertiajs/react';
 import PublicLayout from '@/layouts/public-layout';
 import VillagePotentials from '@/components/public/village-potentials';
 
-export default function PotentialsPage() {
+interface PotentialsPageProps {
+    potentials: any[];
+}
+
+export default function PotentialsPage({ potentials }: PotentialsPageProps) {
     return (
         <PublicLayout>
             <Head>
@@ -11,7 +15,7 @@ export default function PotentialsPage() {
             </Head>
 
             <div className="pt-24 pb-16">
-                <VillagePotentials />
+                <VillagePotentials potentials={potentials} />
             </div>
         </PublicLayout>
     );

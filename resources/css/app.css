@@ -60,66 +60,46 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 
-    --color-olive-50: #f5f6f0;
-    --color-olive-100: #e7ebdb;
-    --color-olive-200: #d0d7bd;
-    --color-olive-300: #b3be93;
-    --color-olive-400: #90a068;
-    --color-olive-500: #708144;
-    --color-olive-600: #556630;
-    --color-olive-700: #425024;
-    --color-olive-800: #313b1a;
-    --color-olive-900: #232a12;
-    --color-olive-950: #131809;
+    /* ── Navy Blue — Primary Government Color ── */
+    --color-navy-50:  #eef1f8;
+    --color-navy-100: #d5dcee;
+    --color-navy-200: #adb9dd;
+    --color-navy-300: #7e93c7;
+    --color-navy-400: #5570b0;
+    --color-navy-500: #3a549a;
+    --color-navy-600: #2d4080;
+    --color-navy-700: #1e2e63;
+    --color-navy-750: #182450;
+    --color-navy-800: #121b40;
+    --color-navy-850: #0e1432;
+    --color-navy-900: #0a0f25;
+    --color-navy-950: #060915;
 
-    --color-moss-50: #f4f7f4;
-    --color-moss-100: #e3ebe2;
-    --color-moss-200: #c9d7c7;
-    --color-moss-300: #a3bba0;
-    --color-moss-400: #799b75;
-    --color-moss-500: #5a7e57;
-    --color-moss-600: #456242;
-    --color-moss-700: #384e35;
-    --color-moss-800: #2f402c;
-    --color-moss-900: #273425;
-    --color-moss-950: #141c13;
+    /* ── Stone — Neutral Warm Background ── */
+    --color-stone-50:  #fafaf8;
+    --color-stone-100: #f4f3ef;
+    --color-stone-200: #e8e6e0;
+    --color-stone-300: #d4d1c7;
+    --color-stone-400: #b5b0a2;
+    --color-stone-500: #948e7e;
+    --color-stone-600: #766f5e;
+    --color-stone-700: #5c5648;
+    --color-stone-800: #43403a;
+    --color-stone-900: #2e2b26;
+    --color-stone-950: #18160f;
 
-    --color-brown-50: #faf6f0;
-    --color-brown-100: #f3e8d9;
-    --color-brown-200: #e5ccb0;
-    --color-brown-300: #d3ab84;
-    --color-brown-400: #bf855c;
-    --color-brown-500: #ab6740;
-    --color-brown-600: #965132;
-    --color-brown-700: #7a3f28;
-    --color-brown-800: #613221;
-    --color-brown-900: #502b1c;
-    --color-brown-950: #2d160e;
-
-    --color-cream-50: #fcfbf4;
-    --color-cream-100: #f7f6e3;
-    --color-cream-200: #ebe8bf;
-    --color-cream-300: #ded897;
-    --color-cream-400: #cdbf6a;
-    --color-cream-500: #bba746;
-    --color-cream-600: #a18c35;
-    --color-cream-700: #806e2c;
-    --color-cream-800: #665727;
-    --color-cream-900: #544723;
-    --color-cream-950: #2f2711;
-
-    --color-gold-50: #fffdf0;
-    --color-gold-100: #fff9cf;
-    --color-gold-200: #ffeaa1;
-    --color-gold-300: #fed156;
-    --color-gold-400: #fcc228;
-    --color-gold-450: #faaf02;
-    --color-gold-500: #F4B400;
-    --color-gold-600: #d19a00;
-    --color-gold-700: #ad8000;
-    --color-gold-800: #8c6700;
-    --color-gold-900: #735400;
-    --color-gold-950: #453200;
+    /* ── Gold — Dignified Accent ── */
+    --color-gold-50:  #fffbeb;
+    --color-gold-100: #fef3c7;
+    --color-gold-200: #fde68a;
+    --color-gold-300: #fcd34d;
+    --color-gold-400: #f6c026;
+    --color-gold-500: #e6a817;
+    --color-gold-600: #c9860d;
+    --color-gold-700: #a66509;
+    --color-gold-800: #87500a;
+    --color-gold-900: #6e420c;
+    --color-gold-950: #3d2004;
 }
 
 :root {

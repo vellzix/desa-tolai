@@ -2,7 +2,11 @@ import { Head } from '@inertiajs/react';
 import PublicLayout from '@/layouts/public-layout';
 import VillageNews from '@/components/public/village-news';
 
-export default function NewsPage() {
+interface NewsPageProps {
+    news: any[];
+}
+
+export default function NewsPage({ news }: NewsPageProps) {
     return (
         <PublicLayout>
             <Head>
@@ -11,7 +15,7 @@ export default function NewsPage() {
             </Head>
 
             <div className="pt-24 pb-16">
-                <VillageNews />
+                <VillageNews news={news} />
             </div>
         </PublicLayout>
     );

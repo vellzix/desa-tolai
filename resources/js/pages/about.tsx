@@ -3,7 +3,12 @@ import PublicLayout from '@/layouts/public-layout';
 import VillageAbout from '@/components/public/village-about';
 import VillageOfficials from '@/components/public/village-officials';
 
-export default function AboutPage() {
+interface AboutPageProps {
+    profile: any;
+    officials: any[];
+}
+
+export default function AboutPage({ profile, officials }: AboutPageProps) {
     return (
         <PublicLayout>
             <Head>
@@ -12,8 +17,8 @@ export default function AboutPage() {
             </Head>
 
             <div className="pt-24 pb-16 space-y-12">
-                <VillageAbout />
-                <VillageOfficials />
+                <VillageAbout profile={profile} />
+                <VillageOfficials officials={officials} />
             </div>
         </PublicLayout>
     );
