@@ -13,6 +13,7 @@ class VillagePotential extends Model
         'details',
         'category',
         'icon',
+        'image_path',
     ];
 
     protected $casts = [

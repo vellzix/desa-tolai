@@ -1,5 +1,5 @@
-import { Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid } from 'lucide-react';
+import { Link, usePage } from '@inertiajs/react';
+import { LayoutDashboard, Building2, Users, Newspaper, Sprout, ImageIcon, ShieldCheck, FolderGit2, BookOpen, Globe } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -16,24 +16,21 @@ import {
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
 
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
+const cmsNavItems: NavItem[] = [
+    { title: 'Ikhtisar', href: '/dashboard', icon: LayoutDashboard },
+    { title: 'Profil Desa', href: '/dashboard/profil', icon: Building2 },
+    { title: 'Aparatur Desa', href: '/dashboard/aparatur', icon: Users },
+    { title: 'Kabar & Berita', href: '/dashboard/kabar', icon: Newspaper },
+    { title: 'Potensi Wilayah', href: '/dashboard/potensi', icon: Sprout },
+    { title: 'Galeri Dokumentasi', href: '/dashboard/galeri', icon: ImageIcon },
+    { title: 'Kelola Admin', href: '/dashboard/admin-akun', icon: ShieldCheck },
 ];
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
+        title: 'Lihat Website Desa',
+        href: '/',
+        icon: Globe,
     },
 ];
 
@@ -53,7 +50,7 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain items={cmsNavItems} />
             </SidebarContent>
 
             <SidebarFooter>

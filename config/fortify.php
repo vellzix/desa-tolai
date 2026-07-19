@@ -161,7 +161,7 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+        // Features::registration(), // Dinonaktifkan — hanya admin yang bisa membuat akun admin baru via dashboard
         Features::resetPasswords(),
         Features::emailVerification(),
         Features::twoFactorAuthentication([
