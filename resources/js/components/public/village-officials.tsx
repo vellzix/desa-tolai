@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Landmark, Star, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Star, ShieldCheck, ChevronRight } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 interface Official {
@@ -174,10 +174,6 @@ export default function VillageOfficials({ officials = [] }: { officials?: Offic
                         <p className="mt-1.5 text-sm text-stone-500 dark:text-stone-400">
                             Jajaran perangkat pelaksana pelayanan publik administrasi Desa Tolai.
                         </p>
-                    </div>
-                    <div className="text-xs text-stone-400 shrink-0 flex items-center gap-1.5">
-                        <Landmark className="h-3.5 w-3.5 text-navy-600" />
-                        <span>Periode Jabatan 2021–2027</span>
                     </div>
                 </div>
 

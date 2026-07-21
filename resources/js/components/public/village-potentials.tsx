@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { Sprout, Wheat, Landmark, Heart, Eye, Users, ChevronRight, Award } from 'lucide-react';
+import { Sprout, Wheat, Heart, Eye, Users, ChevronRight, Award } from 'lucide-react';
+
+const LogoKabupatenIcon = ({ className }: { className?: string }) => (
+    <img src="/Lambang_Kabupaten_Parigi_Moutong.png" className={`${className} object-contain`} alt="Logo" />
+);
 
 interface CardItem {
     title: string;
@@ -13,7 +17,7 @@ interface CardItem {
 const iconMap: Record<string, any> = {
     Wheat,
     Sprout,
-    Landmark,
+    Landmark: LogoKabupatenIcon,
     Award,
     Users,
     Heart,
@@ -45,7 +49,7 @@ export default function VillagePotentials({ potentials = [] }: { potentials?: an
             description: 'Terletak strategis di jalur poros Trans Sulawesi menjadikannya pusat niaga teraktif di Kecamatan Torue.',
             details: ['Pasar Tradisional Tolai harian', 'Pusat kuliner khas Nusantara', 'Sentra kerajinan anyaman'],
             bgGradient: 'from-slate-500/5 to-slate-600/5 dark:from-slate-900/10 dark:to-slate-900/10',
-            icon: Landmark,
+            icon: LogoKabupatenIcon,
         },
     ];
 

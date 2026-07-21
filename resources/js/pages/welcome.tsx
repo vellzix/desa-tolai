@@ -24,7 +24,7 @@ export default function Welcome({ profile, officials, potentials, news, hamletHe
                 <meta property="og:title" content="Desa Tolai - Parigi Moutong, Sulawesi Tengah" />
                 <meta property="og:description" content="Website Resmi Profil Desa Tolai, Kecamatan Torue, Kabupaten Parigi Moutong. Informasi sejarah, potensi pertanian, dan pelayanan administrasi desa." />
                 <meta property="og:type" content="website" />
-                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+                <link rel="icon" type="image/png" href="/Lambang_Kabupaten_Parigi_Moutong.png" />
             </Head>
 
             {/* Hero — Landing Utama */}

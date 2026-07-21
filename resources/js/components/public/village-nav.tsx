@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { useAppearance } from '@/hooks/use-appearance';
-import { Menu, X, Sun, Moon, Landmark, ShieldCheck, ChevronRight, Phone, Clock } from 'lucide-react';
+import { Menu, X, Sun, Moon, ShieldCheck, ChevronRight, Phone, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { login, dashboard } from '@/routes';
 
@@ -57,8 +57,12 @@ export default function VillageNav() {
 
                     {/* Brand / Logo */}
                     <Link href="/" className="flex items-center gap-3 group shrink-0">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy-700 text-white shadow-sm">
-                            <Landmark className="h-5 w-5" />
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-transparent shrink-0">
+                            <img 
+                                src="/Lambang_Kabupaten_Parigi_Moutong.png" 
+                                alt="Logo Parigi Moutong" 
+                                className="h-9 w-auto object-contain group-hover:scale-105 transition-transform"
+                            />
                         </div>
                         <div className="flex flex-col">
                             <span className="text-sm font-bold text-navy-900 dark:text-white leading-tight tracking-tight">

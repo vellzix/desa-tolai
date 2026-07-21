@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { Landmark, Mail, Phone, MapPin, ExternalLink, Shield } from 'lucide-react';
+import { Mail, Phone, MapPin, ExternalLink, Shield } from 'lucide-react';
 
 export default function VillageFooter() {
     const currentYear = new Date().getFullYear();
@@ -26,8 +26,8 @@ export default function VillageFooter() {
             <div className="bg-navy-900 border-b border-navy-800 py-4">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center bg-navy-700 text-white">
-                            <Landmark className="h-5 w-5" />
+                        <div className="flex h-10 w-10 items-center justify-center bg-transparent shrink-0">
+                            <img src="/Lambang_Kabupaten_Parigi_Moutong.png" className="h-9 w-auto object-contain" alt="Logo" />
                         </div>
                         <div>
                             <p className="text-white text-sm font-bold leading-tight">Pemerintah Desa Tolai</p>

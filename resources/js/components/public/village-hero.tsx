@@ -1,5 +1,9 @@
 import { Link } from '@inertiajs/react';
-import { ArrowDown, Users, Map, Sprout, Award, Landmark, ChevronRight, Calendar, FileText } from 'lucide-react';
+import { ArrowDown, Users, Map, Sprout, Award, ChevronRight, Calendar, FileText } from 'lucide-react';
+
+const LogoKabupatenIcon = ({ className }: { className?: string }) => (
+    <img src="/Lambang_Kabupaten_Parigi_Moutong.png" className={`${className} object-contain`} alt="Logo" />
+);
 
 const defaultStats = [
     { label: 'Total Penduduk', value: '6.842', iconKey: 'Users', desc: '3 Dusun & 13 RT' },
@@ -13,7 +17,7 @@ const iconMap: Record<string, any> = {
     Map,
     Sprout,
     Award,
-    Landmark,
+    Landmark: LogoKabupatenIcon,
 };
 
 interface VillageHeroProps {
@@ -45,7 +49,7 @@ export default function VillageHero({ statsCards }: VillageHeroProps) {
                     <div>
                         {/* Official Badge */}
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 mb-7 border border-gold-600/50 bg-navy-800/60 text-gold-400 text-[10px] font-bold uppercase tracking-[0.18em]">
-                            <Landmark className="h-3 w-3" />
+                            <img src="/Lambang_Kabupaten_Parigi_Moutong.png" className="h-3.5 w-auto object-contain shrink-0" alt="Logo" />
                             Website Resmi Pemerintah Desa Tolai
                         </div>
 

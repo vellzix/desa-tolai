@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, Compass, Target, MessageSquare, Landmark, History, MapPin, Clock } from 'lucide-react';
+import { BookOpen, Compass, Target, MessageSquare, History, MapPin, Clock } from 'lucide-react';
 
 export default function VillageAbout({ profile }: { profile?: any }) {
     const [activeTab, setActiveTab] = useState<'welcome' | 'history' | 'vision'>('welcome');
@@ -194,7 +194,7 @@ export default function VillageAbout({ profile }: { profile?: any }) {
 
                         {/* Footer Info */}
                         <div className="mt-8 pt-4 border-t border-stone-200 dark:border-navy-800 flex items-center gap-2 text-xs text-stone-400">
-                            <Landmark className="h-3.5 w-3.5 text-navy-600" />
+                            <img src="/Lambang_Kabupaten_Parigi_Moutong.png" className="h-4 w-auto object-contain shrink-0" alt="Logo" />
                             <span>Kantor Desa Tolai · Jam Layanan: {activeProfile.timings || defaultProfile.timings}</span>
                         </div>
                     </div>
