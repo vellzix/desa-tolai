@@ -10,9 +10,21 @@ interface ProfileProps {
     profile: any;
 }
 
+const defaultStatsCards = [
+    { label: 'Total Penduduk', value: '6.842', desc: '3 Dusun & 13 RT', iconKey: 'Users' },
+    { label: 'Luas Wilayah', value: '14,8 km²', desc: 'Kecamatan Torue', iconKey: 'Map' },
+    { label: 'Komoditas Utama', value: 'Beras & Kakao', desc: 'Sektor Pertanian', iconKey: 'Sprout' },
+    { label: 'Kerukunan Budaya', value: 'Harmonis', desc: 'Bhinneka Tunggal Ika', iconKey: 'Award' },
+];
+
 export default function Profile({ profile }: ProfileProps) {
     const defaultMissions = profile?.missions ? (Array.isArray(profile.missions) ? profile.missions : JSON.parse(profile.missions)) : [];
     
+    let initialStatsCards = defaultStatsCards;
+    if (profile?.stats_cards) {
+        initialStatsCards = typeof profile.stats_cards === 'string' ? JSON.parse(profile.stats_cards) : profile.stats_cards;
+    }
+
     const { data, setData, post, processing, errors } = useForm({
         welcome_title: profile?.welcome_title || 'Portal Informasi Desa Tolai',
         welcome_text: profile?.welcome_text || '',
@@ -25,6 +37,7 @@ export default function Profile({ profile }: ProfileProps) {
         email: profile?.email || '',
         address: profile?.address || '',
         timings: profile?.timings || 'Senin – Jumat, 08.00 – 15.00 WITA',
+        stats_cards: initialStatsCards,
     });
 
     const [newMission, setNewMission] = useState('');
@@ -215,6 +228,87 @@ export default function Profile({ profile }: ProfileProps) {
                                         Tambah Misi
                                     </Button>
                                 </div>
+                            </div>
+                        </div>
+
+                        {/* ── Section: Info Cards Halaman Utama (Stats Cards) ── */}
+                        <div className="pt-6 border-t border-stone-200 dark:border-navy-800 space-y-4">
+                            <div>
+                                <h3 className="text-sm font-bold text-navy-900 dark:text-white">Kartu Informasi Utama (Hero Section)</h3>
+                                <p className="text-xs text-stone-500 mt-0.5">Kelola data ringkas yang tampil pada kartu informasi di beranda utama (Total Penduduk, Luas Wilayah, Komoditas Utama, dll).</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {data.stats_cards.map((card: any, idx: number) => (
+                                    <div key={idx} className="p-4 border border-stone-200 dark:border-navy-800 bg-stone-50/50 dark:bg-navy-950/20 rounded-lg space-y-3">
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-xs font-bold text-navy-700 dark:text-gold-400 uppercase tracking-wider">Kartu #{idx + 1}</span>
+                                            <span className="text-[10px] text-stone-400">Ikon: {card.iconKey || 'Users'}</span>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <div className="space-y-1">
+                                                <Label htmlFor={`card_label_${idx}`}>Label Kartu</Label>
+                                                <Input
+                                                    id={`card_label_${idx}`}
+                                                    value={card.label}
+                                                    onChange={e => {
+                                                        const updated = [...data.stats_cards];
+                                                        updated[idx] = { ...updated[idx], label: e.target.value };
+                                                        setData('stats_cards', updated);
+                                                    }}
+                                                    placeholder="e.g. Total Penduduk"
+                                                />
+                                            </div>
+                                            <div className="space-y-1">
+                                                <Label htmlFor={`card_value_${idx}`}>Nilai Utama</Label>
+                                                <Input
+                                                    id={`card_value_${idx}`}
+                                                    value={card.value}
+                                                    onChange={e => {
+                                                        const updated = [...data.stats_cards];
+                                                        updated[idx] = { ...updated[idx], value: e.target.value };
+                                                        setData('stats_cards', updated);
+                                                    }}
+                                                    placeholder="e.g. 6.842"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <div className="space-y-1">
+                                                <Label htmlFor={`card_desc_${idx}`}>Sub Deskripsi</Label>
+                                                <Input
+                                                    id={`card_desc_${idx}`}
+                                                    value={card.desc}
+                                                    onChange={e => {
+                                                        const updated = [...data.stats_cards];
+                                                        updated[idx] = { ...updated[idx], desc: e.target.value };
+                                                        setData('stats_cards', updated);
+                                                    }}
+                                                    placeholder="e.g. 3 Dusun & 13 RT"
+                                                />
+                                            </div>
+                                            <div className="space-y-1">
+                                                <Label htmlFor={`card_icon_${idx}`}>Pilihan Ikon</Label>
+                                                <select
+                                                    id={`card_icon_${idx}`}
+                                                    className="w-full text-xs p-2.5 border border-stone-300 rounded dark:bg-navy-950 dark:border-navy-800 focus:outline-none"
+                                                    value={card.iconKey || 'Users'}
+                                                    onChange={e => {
+                                                        const updated = [...data.stats_cards];
+                                                        updated[idx] = { ...updated[idx], iconKey: e.target.value };
+                                                        setData('stats_cards', updated);
+                                                    }}
+                                                >
+                                                    <option value="Users">Users (Penduduk)</option>
+                                                    <option value="Map">Map (Luas/Wilayah)</option>
+                                                    <option value="Sprout">Sprout (Komoditas/Tani)</option>
+                                                    <option value="Award">Award (Kerukunan/Prestasi)</option>
+                                                    <option value="Landmark">Landmark (Pemerintahan)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 

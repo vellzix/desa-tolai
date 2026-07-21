@@ -31,6 +31,7 @@ class AdminProfileController extends Controller
             'email' => 'nullable|email|max:255',
             'address' => 'nullable|string',
             'timings' => 'nullable|string|max:255',
+            'stats_cards' => 'nullable|array',
         ]);
 
         if ($request->hasFile('welcome_kades_photo_file')) {
@@ -53,6 +54,7 @@ class AdminProfileController extends Controller
             'email' => $data['email'] ?? null,
             'address' => $data['address'] ?? null,
             'timings' => $data['timings'] ?? null,
+            'stats_cards' => $data['stats_cards'] ?? null,
         ]);
 
         return redirect()->back()->with('success', 'Profil desa berhasil diperbarui.');

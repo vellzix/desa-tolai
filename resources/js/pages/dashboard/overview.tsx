@@ -142,23 +142,25 @@ export default function Overview({ stats, recentNews }: OverviewProps) {
 
                 {/* ── Stats Grid ── */}
                 <div>
-                    <h2 className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-3">Statistik Konten</h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                    <h2 className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">Statistik Konten</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                         {cards.map((card) => (
                             <Link
                                 key={card.label}
                                 href={card.href}
-                                className="group bg-white dark:bg-neutral-900 border border-stone-200 dark:border-neutral-800 rounded-xl p-4 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                                className="group bg-white dark:bg-neutral-900 border border-stone-200 dark:border-neutral-800 rounded-2xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 flex items-center justify-between"
                             >
-                                <div className={`h-9 w-9 rounded-lg flex items-center justify-center mb-3 ${card.light}`}>
-                                    <card.icon className="h-4.5 w-4.5" />
+                                <div>
+                                    <p className="text-xs text-stone-500 dark:text-stone-400 font-semibold mb-2">
+                                        {card.label}
+                                    </p>
+                                    <p className="text-3xl font-extrabold text-slate-800 dark:text-white leading-none">
+                                        {card.value}
+                                    </p>
                                 </div>
-                                <p className="text-2xl font-bold text-slate-800 dark:text-white leading-none mb-1">
-                                    {card.value}
-                                </p>
-                                <p className="text-[11px] text-stone-500 dark:text-stone-400 font-medium leading-tight">
-                                    {card.label}
-                                </p>
+                                <div className={`h-14 w-14 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform ${card.light}`}>
+                                    <card.icon className="h-7 w-7" />
+                                </div>
                             </Link>
                         ))}
                     </div>
@@ -178,18 +180,18 @@ export default function Overview({ stats, recentNews }: OverviewProps) {
                                 <Link
                                     key={action.label}
                                     href={action.href}
-                                    className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-stone-50 dark:hover:bg-neutral-800 transition-colors group"
+                                    className="flex items-center gap-4 p-3.5 rounded-xl hover:bg-stone-50 dark:hover:bg-neutral-800 transition-colors group border border-transparent hover:border-stone-200 dark:hover:border-neutral-700"
                                 >
-                                    <div className={`h-8 w-8 rounded-lg bg-stone-100 dark:bg-neutral-800 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform ${action.color}`}>
-                                        <action.icon className="h-4 w-4" />
+                                    <div className={`h-10 w-10 rounded-xl bg-stone-100 dark:bg-neutral-800 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform ${action.color}`}>
+                                        <action.icon className="h-5 w-5" />
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                        <p className="text-[12px] font-semibold text-slate-700 dark:text-slate-200 leading-tight">
+                                        <p className="text-sm font-bold text-slate-800 dark:text-slate-100 leading-tight">
                                             {action.label}
                                         </p>
-                                        <p className="text-[10px] text-stone-400 truncate">{action.sub}</p>
+                                        <p className="text-xs text-stone-400 truncate mt-0.5">{action.sub}</p>
                                     </div>
-                                    <ArrowRight className="h-3.5 w-3.5 text-stone-300 group-hover:text-stone-500 shrink-0 transition-colors" />
+                                    <ArrowRight className="h-4 w-4 text-stone-300 group-hover:text-stone-600 dark:group-hover:text-stone-300 shrink-0 transition-colors" />
                                 </Link>
                             ))}
                         </div>

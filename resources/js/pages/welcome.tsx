@@ -5,15 +5,17 @@ import VillageAbout from '@/components/public/village-about';
 import VillageOfficials from '@/components/public/village-officials';
 import VillagePotentials from '@/components/public/village-potentials';
 import VillageNews from '@/components/public/village-news';
+import VillageHamletHeads from '@/components/public/village-hamlet-heads';
 
 interface WelcomeProps {
     profile: any;
     officials: any[];
     potentials: any[];
     news: any[];
+    hamletHeads?: any[];
 }
 
-export default function Welcome({ profile, officials, potentials, news }: WelcomeProps) {
+export default function Welcome({ profile, officials, potentials, news, hamletHeads }: WelcomeProps) {
     return (
         <PublicLayout>
             <Head>
@@ -26,7 +28,7 @@ export default function Welcome({ profile, officials, potentials, news }: Welcom
             </Head>
 
             {/* Hero — Landing Utama */}
-            <VillageHero />
+            <VillageHero statsCards={profile?.stats_cards} />
 
             {/* Konten Profil Desa */}
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-10 space-y-0">
@@ -36,6 +38,7 @@ export default function Welcome({ profile, officials, potentials, news }: Welcom
 
                 {/* Aparatur Pemerintah Desa */}
                 <VillageOfficials officials={officials} />
+                <VillageHamletHeads hamletHeads={hamletHeads} />
 
                 {/* Potensi Wilayah & Kebudayaan */}
                 <VillagePotentials potentials={potentials} />

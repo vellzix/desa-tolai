@@ -1,13 +1,31 @@
 import { Link } from '@inertiajs/react';
 import { ArrowDown, Users, Map, Sprout, Award, Landmark, ChevronRight, Calendar, FileText } from 'lucide-react';
 
-export default function VillageHero() {
-    const stats = [
-        { label: 'Total Penduduk', value: '6.842', icon: Users, desc: '3 Dusun & 13 RT' },
-        { label: 'Luas Wilayah', value: '14,8 km²', icon: Map, desc: 'Kecamatan Torue' },
-        { label: 'Komoditas Utama', value: 'Beras & Kakao', icon: Sprout, desc: 'Sektor Pertanian' },
-        { label: 'Kerukunan Budaya', value: 'Harmonis', icon: Award, desc: 'Bhinneka Tunggal Ika' },
-    ];
+const defaultStats = [
+    { label: 'Total Penduduk', value: '6.842', iconKey: 'Users', desc: '3 Dusun & 13 RT' },
+    { label: 'Luas Wilayah', value: '14,8 km²', iconKey: 'Map', desc: 'Kecamatan Torue' },
+    { label: 'Komoditas Utama', value: 'Beras & Kakao', iconKey: 'Sprout', desc: 'Sektor Pertanian' },
+    { label: 'Kerukunan Budaya', value: 'Harmonis', iconKey: 'Award', desc: 'Bhinneka Tunggal Ika' },
+];
+
+const iconMap: Record<string, any> = {
+    Users,
+    Map,
+    Sprout,
+    Award,
+    Landmark,
+};
+
+interface VillageHeroProps {
+    statsCards?: any[];
+}
+
+export default function VillageHero({ statsCards }: VillageHeroProps) {
+    const rawStats = statsCards && statsCards.length > 0 ? statsCards : defaultStats;
+    const stats = rawStats.map((item: any) => ({
+        ...item,
+        icon: iconMap[item.iconKey || item.icon] || Users,
+    }));
 
     return (
         <section

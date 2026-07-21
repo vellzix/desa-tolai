@@ -33,6 +33,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/dashboard/galleries/{id}', [App\Http\Controllers\Admin\AdminGalleryController::class, 'destroy'])->name('admin.galleries.destroy');
     Route::post('/dashboard/admins', [App\Http\Controllers\Admin\AdminUserController::class, 'store'])->name('admin.users.store');
     Route::delete('/dashboard/admins/{id}', [App\Http\Controllers\Admin\AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+    
+    Route::get('/dashboard/kadus', [App\Http\Controllers\Admin\DashboardController::class, 'hamletHeads'])->name('admin.hamlet_heads.page');
+    Route::post('/dashboard/hamlet-heads', [App\Http\Controllers\Admin\AdminHamletHeadController::class, 'store'])->name('admin.hamlet_heads.store');
+    Route::post('/dashboard/hamlet-heads/{id}', [App\Http\Controllers\Admin\AdminHamletHeadController::class, 'update'])->name('admin.hamlet_heads.update');
+    Route::delete('/dashboard/hamlet-heads/{id}', [App\Http\Controllers\Admin\AdminHamletHeadController::class, 'destroy'])->name('admin.hamlet_heads.destroy');
 });
 
 require __DIR__.'/settings.php';

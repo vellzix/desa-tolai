@@ -157,7 +157,7 @@ export default function VillageOfficials({ officials = [] }: { officials?: Offic
 
     return (
         <section id="officials" className="py-10 bg-transparent">
-            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-navy-950 border border-stone-200 dark:border-navy-800 sm:rounded-xl shadow-sm">
+            <div className="mx-auto max-w-7xl px-6 py-10 sm:px-10 sm:py-12 bg-white dark:bg-navy-950 border border-stone-200 dark:border-navy-800 rounded-xl shadow-sm">
 
                 {/* ── Section Header ── */}
                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 pb-6 border-b border-stone-200 dark:border-navy-800">
@@ -182,34 +182,39 @@ export default function VillageOfficials({ officials = [] }: { officials?: Offic
                 </div>
 
                 {/* ── Pimpinan: Kades & Sekdes — Featured Large Cards ── */}
-                <div className="mb-8">
+                <div className="mb-10">
                     <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-4">
                         Kepemimpinan Desa
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {pimpinan.map((official, idx) => (
                             <div
                                 key={idx}
                                 onClick={() => setSelectedOfficial(official)}
-                                className="group flex gap-5 items-stretch bg-stone-50 dark:bg-navy-900/50 border border-stone-200 dark:border-navy-800 cursor-pointer hover:border-navy-400 dark:hover:border-navy-500 hover:shadow-md transition-all duration-200 overflow-hidden"
+                                className="group flex flex-col bg-stone-50 dark:bg-navy-900/50 border border-stone-200 dark:border-navy-800 cursor-pointer hover:border-navy-400 dark:hover:border-navy-500 hover:shadow-xl transition-all duration-200 overflow-hidden rounded-lg"
                             >
-                                {/* Photo — portrait, large */}
-                                <div className="w-40 shrink-0 overflow-hidden bg-stone-200 dark:bg-navy-800 self-stretch">
-                                    <OfficialPhoto official={official} className="object-cover object-top" />
+                                {/* Foto portrait besar — 3/4 tinggi kartu */}
+                                <div className="w-full aspect-[3/4] overflow-hidden bg-stone-200 dark:bg-navy-800 relative">
+                                    <OfficialPhoto official={official} className="object-cover object-top w-full h-full group-hover:scale-105 transition-transform duration-500" />
+                                    {/* Gradient overlay bawah */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-transparent to-transparent" />
+                                    {/* Badge jabatan di atas foto */}
+                                    <div className="absolute bottom-4 left-4 right-4">
+                                        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-navy-700/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest mb-1.5 rounded">
+                                            {idx === 0 ? 'Kepala Desa' : 'Sekretaris Desa'}
+                                        </div>
+                                        <h3 className="text-base font-bold text-white leading-snug drop-shadow">
+                                            {official.name}
+                                        </h3>
+                                    </div>
                                 </div>
 
-                                {/* Info */}
-                                <div className="flex flex-col justify-center py-5 pr-5 gap-2 flex-1 min-w-0">
-                                    <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-navy-700 text-white text-[10px] font-bold uppercase tracking-widest w-fit">
-                                        {idx === 0 ? 'Kepala Desa' : 'Sekretaris Desa'}
-                                    </div>
-                                    <h3 className="text-base font-bold text-navy-900 dark:text-white leading-snug">
-                                        {official.name}
-                                    </h3>
-                                    <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed line-clamp-3">
+                                {/* Info ringkas di bawah foto */}
+                                <div className="p-4 border-t border-stone-200 dark:border-navy-800">
+                                    <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed line-clamp-2">
                                         {official.description}
                                     </p>
-                                    <span className="mt-1 inline-flex items-center gap-1 text-xs text-navy-600 dark:text-gold-500 font-semibold group-hover:underline">
+                                    <span className="mt-3 inline-flex items-center gap-1 text-xs text-navy-600 dark:text-gold-400 font-semibold group-hover:underline">
                                         Lihat detail tugas <ChevronRight className="h-3.5 w-3.5" />
                                     </span>
                                 </div>
@@ -223,24 +228,25 @@ export default function VillageOfficials({ officials = [] }: { officials?: Offic
                     <p className="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-4">
                         Perangkat Pelaksana
                     </p>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
                         {staff.map((official, idx) => (
                             <div
                                 key={idx}
                                 onClick={() => setSelectedOfficial(official)}
-                                className="group flex flex-col bg-stone-50 dark:bg-navy-900/50 border border-stone-200 dark:border-navy-800 cursor-pointer hover:border-navy-400 dark:hover:border-navy-500 hover:shadow-md transition-all duration-200 overflow-hidden"
+                                className="group flex flex-col bg-stone-50 dark:bg-navy-900/50 border border-stone-200 dark:border-navy-800 cursor-pointer hover:border-navy-400 dark:hover:border-navy-500 hover:shadow-xl transition-all duration-200 overflow-hidden rounded-lg"
                             >
-                                {/* Photo — portrait aspect ratio */}
-                                <div className="w-full aspect-[3/4] overflow-hidden bg-stone-200 dark:bg-navy-800">
-                                    <OfficialPhoto official={official} className="object-cover object-top w-full h-full" />
+                                {/* Foto portrait — aspect 3/4, lebih tinggi */}
+                                <div className="w-full aspect-[3/4] overflow-hidden bg-stone-200 dark:bg-navy-800 relative">
+                                    <OfficialPhoto official={official} className="object-cover object-top w-full h-full group-hover:scale-105 transition-transform duration-500" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent" />
                                 </div>
 
                                 {/* Info below photo */}
                                 <div className="p-3 border-t border-stone-200 dark:border-navy-800">
-                                    <h4 className="text-[11px] font-bold text-navy-900 dark:text-white leading-snug line-clamp-2">
+                                    <h4 className="text-[12px] font-bold text-navy-900 dark:text-white leading-snug line-clamp-2 h-9">
                                         {official.name}
                                     </h4>
-                                    <p className="text-[10px] text-navy-600 dark:text-gold-400 font-semibold mt-0.5 leading-tight">
+                                    <p className="text-[10px] text-navy-600 dark:text-gold-400 font-semibold mt-0.5 leading-tight truncate">
                                         {official.role}
                                     </p>
                                     <span className="mt-2 flex items-center gap-1 text-[10px] text-stone-400 group-hover:text-navy-600 dark:group-hover:text-gold-400 transition-colors">

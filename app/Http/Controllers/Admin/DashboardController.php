@@ -9,6 +9,7 @@ use App\Models\VillageOfficial;
 use App\Models\VillageNews;
 use App\Models\VillagePotential;
 use App\Models\VillageGallery;
+use App\Models\VillageHamletHead;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -23,6 +24,7 @@ class DashboardController extends Controller
                 'potentials'=> VillagePotential::count(),
                 'galleries' => VillageGallery::count(),
                 'admins'    => User::count(),
+                'hamlet_heads'=> VillageHamletHead::count(),
                 'total_views'=> VillageNews::sum('views'),
             ],
             'recentNews' => VillageNews::orderBy('id', 'desc')->take(5)->get(),
@@ -68,6 +70,13 @@ class DashboardController extends Controller
     {
         return Inertia::render('dashboard/admins', [
             'admins' => User::orderBy('created_at')->get(['id', 'name', 'email', 'created_at']),
+        ]);
+    }
+
+    public function hamletHeads(): Response
+    {
+        return Inertia::render('dashboard/hamlet-heads', [
+            'hamletHeads' => VillageHamletHead::orderBy('dusun_order')->get(),
         ]);
     }
 }

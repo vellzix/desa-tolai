@@ -2,13 +2,15 @@ import { Head } from '@inertiajs/react';
 import PublicLayout from '@/layouts/public-layout';
 import VillageAbout from '@/components/public/village-about';
 import VillageOfficials from '@/components/public/village-officials';
+import VillageHamletHeads from '@/components/public/village-hamlet-heads';
 
 interface AboutPageProps {
     profile: any;
     officials: any[];
+    hamletHeads?: any[];
 }
 
-export default function AboutPage({ profile, officials }: AboutPageProps) {
+export default function AboutPage({ profile, officials, hamletHeads }: AboutPageProps) {
     return (
         <PublicLayout>
             <Head>
@@ -19,6 +21,7 @@ export default function AboutPage({ profile, officials }: AboutPageProps) {
             <div className="pt-24 pb-16 space-y-12">
                 <VillageAbout profile={profile} />
                 <VillageOfficials officials={officials} />
+                <VillageHamletHeads hamletHeads={hamletHeads} />
             </div>
         </PublicLayout>
     );

@@ -7,6 +7,7 @@ use App\Models\VillageOfficial;
 use App\Models\VillageNews;
 use App\Models\VillagePotential;
 use App\Models\VillageGallery;
+use App\Models\VillageHamletHead;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -17,6 +18,7 @@ class PublicController extends Controller
         return Inertia::render('welcome', [
             'profile' => VillageProfile::first(),
             'officials' => VillageOfficial::orderBy('sort_order')->get(),
+            'hamletHeads' => VillageHamletHead::orderBy('dusun_order')->get(),
             'potentials' => VillagePotential::all(),
             'news' => VillageNews::orderBy('id', 'desc')->take(6)->get(),
         ]);
@@ -27,6 +29,7 @@ class PublicController extends Controller
         return Inertia::render('about', [
             'profile' => VillageProfile::first(),
             'officials' => VillageOfficial::orderBy('sort_order')->get(),
+            'hamletHeads' => VillageHamletHead::orderBy('dusun_order')->get(),
         ]);
     }
 

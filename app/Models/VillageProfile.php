@@ -18,9 +18,11 @@ class VillageProfile extends Model
         'email',
         'address',
         'timings',
+        'stats_cards',
     ];
 
     protected $casts = [
         'missions' => 'array',
+        'stats_cards' => 'array',
     ];
 }

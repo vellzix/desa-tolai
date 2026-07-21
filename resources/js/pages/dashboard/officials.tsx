@@ -109,44 +109,39 @@ export default function Officials({ officials }: OfficialsProps) {
                             </Button>
                         </div>
 
-                        {/* Grid display */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {/* Grid display - matching hamlet-heads layout with consistent card frames */}
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             {officials.map((official) => (
-                                <div key={official.id} className="bg-stone-50 dark:bg-navy-950/20 border border-stone-200 dark:border-navy-800 p-4 flex flex-col justify-between rounded-lg">
-                                    <div className="flex gap-3 items-start mb-4">
-                                        <div className="h-16 w-12 bg-stone-200 shrink-0 overflow-hidden border">
-                                            {official.photo_file ? (
-                                                <img src={official.photo_file} className="h-full w-full object-cover object-top" alt={official.name} />
-                                            ) : (
-                                                <div className="h-full w-full flex items-center justify-center text-xs font-bold text-slate-400 bg-slate-100">
-                                                    {official.photo_label}
-                                                </div>
-                                            )}
-                                        </div>
-                                        <div className="min-w-0">
-                                            <h4 className="text-xs font-bold text-navy-900 dark:text-white leading-tight truncate">{official.name}</h4>
-                                            <p className="text-[10px] text-navy-600 dark:text-gold-400 font-semibold mt-0.5">{official.role}</p>
-                                            {official.nip && <p className="text-[9px] text-stone-400 mt-0.5">NIP: {official.nip}</p>}
+                                <div key={official.id} className="bg-white dark:bg-navy-900/40 border border-stone-200 dark:border-navy-800 rounded-lg overflow-hidden group hover:shadow-md transition-shadow">
+                                    <div className="aspect-[3/4] bg-stone-100 dark:bg-navy-950/50 relative border-b border-stone-200 dark:border-navy-800">
+                                        {official.photo_file ? (
+                                            <img 
+                                                src={official.photo_file} 
+                                                alt={official.name}
+                                                className="w-full h-full object-cover object-top"
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full flex flex-col items-center justify-center text-stone-400 dark:text-navy-700 bg-stone-200 dark:bg-navy-900">
+                                                <span className="font-bold text-2xl opacity-75">{official.photo_label || official.name?.charAt(0)}</span>
+                                            </div>
+                                        )}
+                                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+                                            <Button size="sm" variant="secondary" onClick={() => handleOpenEdit(official)} className="cursor-pointer">
+                                                <Edit3 className="h-4 w-4" />
+                                            </Button>
+                                            <Button size="sm" variant="destructive" onClick={() => handleDelete(official.id)} className="cursor-pointer">
+                                                <Trash2 className="h-4 w-4" />
+                                            </Button>
                                         </div>
                                     </div>
-
-                                    <div className="flex gap-2 border-t border-stone-200 dark:border-navy-800/60 pt-3">
-                                        <Button 
-                                            variant="outline" 
-                                            size="sm" 
-                                            onClick={() => handleOpenEdit(official)}
-                                            className="flex-1 rounded border-stone-300 dark:border-navy-700 text-stone-600 dark:text-stone-300 text-[10px] h-7 cursor-pointer"
-                                        >
-                                            <Edit3 className="h-3 w-3 mr-1" /> Edit
-                                        </Button>
-                                        <Button 
-                                            variant="destructive" 
-                                            size="sm" 
-                                            onClick={() => handleDelete(official.id)}
-                                            className="rounded text-[10px] h-7 cursor-pointer"
-                                        >
-                                            <Trash2 className="h-3 w-3 mr-1" /> Hapus
-                                        </Button>
+                                    <div className="p-4">
+                                        <div className="inline-block px-2.5 py-0.5 bg-navy-100 dark:bg-navy-800 text-navy-800 dark:text-gold-400 text-[10px] font-bold uppercase tracking-wider rounded-full mb-2">
+                                            {official.role}
+                                        </div>
+                                        <h3 className="font-bold text-sm text-navy-900 dark:text-white line-clamp-1">{official.name}</h3>
+                                        {official.nip && (
+                                            <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-1 font-mono">NIP: {official.nip}</p>
+                                        )}
                                     </div>
                                 </div>
                             ))}

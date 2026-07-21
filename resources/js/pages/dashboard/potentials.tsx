@@ -125,61 +125,61 @@ export default function Potentials({ potentials }: PotentialsProps) {
                         </Button>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {potentials.map((p) => {
                             const details = Array.isArray(p.details) ? p.details : JSON.parse(p.details || '[]');
                             const imgUrl = getImageUrl(p.image_path);
                             return (
-                                <div key={p.id} className="bg-white dark:bg-navy-900/40 border border-stone-200 dark:border-navy-800 rounded-xl overflow-hidden shadow-sm flex flex-col">
+                                <div key={p.id} className="bg-white dark:bg-navy-900/40 border border-stone-200 dark:border-navy-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
                                     {/* Gambar */}
                                     {imgUrl ? (
-                                        <div className="relative h-44 overflow-hidden bg-stone-100 dark:bg-navy-950">
+                                        <div className="relative h-56 overflow-hidden bg-stone-100 dark:bg-navy-950">
                                             <img
                                                 src={imgUrl}
                                                 alt={p.title}
                                                 className="w-full h-full object-cover"
                                             />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                                            <div className="absolute bottom-2 left-3 flex gap-1.5">
-                                                <span className="px-2 py-0.5 rounded-full bg-white/90 text-navy-800 text-[9px] font-bold uppercase tracking-wider shadow">
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                                            <div className="absolute bottom-3 left-4 flex gap-2">
+                                                <span className="px-2.5 py-1 rounded-full bg-white/95 text-navy-800 text-xs font-bold uppercase tracking-wider shadow">
                                                     {p.badge}
                                                 </span>
-                                                <span className="px-2 py-0.5 rounded-full bg-white/80 text-stone-600 text-[9px] font-medium shadow">
+                                                <span className="px-2.5 py-1 rounded-full bg-white/85 text-stone-700 text-xs font-semibold shadow">
                                                     {p.category === 'economy' ? 'Ekonomi' : 'Budaya'}
                                                 </span>
                                             </div>
                                         </div>
                                     ) : (
-                                        <div className="h-28 bg-gradient-to-br from-stone-100 to-stone-200 dark:from-navy-950/60 dark:to-navy-900/60 flex items-center justify-center">
-                                            <ImageIcon className="h-8 w-8 text-stone-300 dark:text-navy-700" />
+                                        <div className="h-36 bg-gradient-to-br from-stone-100 to-stone-200 dark:from-navy-950/60 dark:to-navy-900/60 flex items-center justify-center">
+                                            <ImageIcon className="h-10 w-10 text-stone-300 dark:text-navy-700" />
                                         </div>
                                     )}
 
                                     {/* Konten */}
-                                    <div className="p-4 flex flex-col flex-1">
+                                    <div className="p-5 flex flex-col flex-1">
                                         {!imgUrl && (
-                                            <div className="flex gap-1.5 mb-2">
-                                                <span className="px-2 py-0.5 rounded bg-navy-100 dark:bg-navy-800 text-navy-800 dark:text-navy-200 text-[9px] font-bold uppercase tracking-wider">{p.badge}</span>
-                                                <span className="text-[9px] text-stone-400 self-center capitalize">{p.category === 'economy' ? 'Ekonomi' : 'Budaya'}</span>
+                                            <div className="flex gap-2 mb-3">
+                                                <span className="px-2.5 py-1 rounded bg-navy-100 dark:bg-navy-800 text-navy-800 dark:text-navy-200 text-xs font-bold uppercase tracking-wider">{p.badge}</span>
+                                                <span className="text-xs text-stone-400 self-center capitalize">{p.category === 'economy' ? 'Ekonomi' : 'Budaya'}</span>
                                             </div>
                                         )}
-                                        <h3 className="text-sm font-bold text-navy-900 dark:text-white">{p.title}</h3>
-                                        <p className="text-xs text-stone-500 mt-1 line-clamp-2 leading-relaxed">{p.description}</p>
+                                        <h3 className="text-base font-bold text-navy-900 dark:text-white">{p.title}</h3>
+                                        <p className="text-xs text-stone-500 dark:text-stone-400 mt-2 line-clamp-3 leading-relaxed">{p.description}</p>
 
-                                        <ul className="mt-3 space-y-1 text-[10px] text-stone-400 flex-1">
+                                        <ul className="mt-4 space-y-1.5 text-xs text-stone-500 dark:text-stone-400 flex-1">
                                             {details.map((d: string, idx: number) => (
-                                                <li key={idx} className="flex gap-1 items-start">
-                                                    <ChevronRight className="h-3 w-3 text-navy-500 shrink-0 mt-0.5" />
+                                                <li key={idx} className="flex gap-2 items-start">
+                                                    <ChevronRight className="h-3.5 w-3.5 text-navy-500 shrink-0 mt-0.5" />
                                                     <span>{d}</span>
                                                 </li>
                                             ))}
                                         </ul>
 
-                                        <div className="flex gap-2 border-t border-stone-200 dark:border-navy-800/60 pt-3 mt-4">
-                                            <Button variant="outline" size="sm" onClick={() => handleOpenEdit(p)} className="flex-1 rounded h-7 text-[10px] cursor-pointer">
+                                        <div className="flex gap-3 border-t border-stone-200 dark:border-navy-800/60 pt-4 mt-5">
+                                            <Button variant="outline" size="sm" onClick={() => handleOpenEdit(p)} className="flex-1 rounded-lg h-9 text-xs font-medium cursor-pointer">
                                                 Edit
                                             </Button>
-                                            <Button variant="destructive" size="sm" onClick={() => handleDelete(p.id)} className="rounded h-7 text-[10px] cursor-pointer">
+                                            <Button variant="destructive" size="sm" onClick={() => handleDelete(p.id)} className="rounded-lg h-9 text-xs font-medium cursor-pointer">
                                                 Hapus
                                             </Button>
                                         </div>
