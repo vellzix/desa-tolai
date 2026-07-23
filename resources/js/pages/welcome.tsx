@@ -6,6 +6,7 @@ import VillageOfficials from '@/components/public/village-officials';
 import VillagePotentials from '@/components/public/village-potentials';
 import VillageNews from '@/components/public/village-news';
 import VillageHamletHeads from '@/components/public/village-hamlet-heads';
+import VillageMap from '@/components/public/village-map';
 
 interface WelcomeProps {
     profile: any;
@@ -45,6 +46,9 @@ export default function Welcome({ profile, officials, potentials, news, hamletHe
 
                 {/* Kabar & Kegiatan Desa */}
                 <VillageNews news={news} />
+
+                {/* Peta Geografis Wilayah */}
+                <VillageMap />
 
             </div>
         </PublicLayout>

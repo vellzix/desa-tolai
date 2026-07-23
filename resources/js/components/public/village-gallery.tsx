@@ -150,7 +150,7 @@ export default function VillageGallery({ galleries = [] }: { galleries?: any[] }
                             {/* Map Iframe */}
                             <iframe
                                 title="Peta Lokasi Desa Tolai"
-                                src="https://www.openstreetmap.org/export/embed.html?bbox=120.3200%2C-1.0200%2C120.4200%2C-0.9300&amp;layer=mapnik&amp;marker=-0.9780%2C120.3700"
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=120.2899%2C-1.0402%2C120.3899%2C-0.9502&amp;layer=mapnik&amp;marker=-0.9951793%2C120.3399018"
                                 className="w-full h-full border-none absolute inset-0 opacity-90"
                                 loading="lazy"
                             />
@@ -159,7 +159,7 @@ export default function VillageGallery({ galleries = [] }: { galleries?: any[] }
                             <div className="relative z-10 p-3.5 m-3 bg-white/95 dark:bg-neutral-900/95 border border-stone-200 dark:border-navy-800 rounded shadow-md max-w-[260px] self-start">
                                 <h4 className="text-xs font-bold text-neutral-950 dark:text-neutral-50 flex items-center gap-1">
                                     <MapPin className="h-3.5 w-3.5 text-red-700 shrink-0" />
-                                    Tolai, Parigi Moutong
+                                    Kantor Desa Tolai
                                 </h4>
                                 <p className="text-[10px] text-neutral-500 dark:text-stone-400 mt-1 leading-normal">
                                     Kecamatan Torue, Kabupaten Parigi Moutong, Sulawesi Tengah, Indonesia.
@@ -168,14 +168,14 @@ export default function VillageGallery({ galleries = [] }: { galleries?: any[] }
 
                             {/* Map Footer Link */}
                             <div className="relative z-10 p-3 m-3 bg-white/95 dark:bg-neutral-900/95 border border-stone-200 dark:border-navy-800 rounded shadow-md self-end flex items-center justify-between gap-4">
-                                <span className="text-[10px] text-neutral-500 dark:text-stone-400 font-semibold uppercase tracking-wider">Wilayah Pesisir Tomini</span>
+                                <span className="text-[10px] text-neutral-500 dark:text-stone-400 font-semibold uppercase tracking-wider">Kantor Desa Tolai</span>
                                 <a
-                                    href="https://www.openstreetmap.org/#map=13/-0.9780/120.3700"
+                                    href="https://maps.app.goo.gl/84o6fT1Hw8KjMkhW9"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1 text-[10px] font-bold text-navy-700 dark:text-gold-500 hover:underline"
                                 >
-                                    Buka Peta Besar
+                                    Buka Google Maps
                                     <ExternalLink className="h-3 w-3" />
                                 </a>
                             </div>
