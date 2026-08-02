@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
-import PublicLayout from '@/layouts/public-layout';
 import VillagePotentials from '@/components/public/village-potentials';
+import PublicLayout from '@/layouts/public-layout';
 
 interface PotentialsPageProps {
     potentials: any[];

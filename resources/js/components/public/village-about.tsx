@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { BookOpen, Compass, Target, MessageSquare, History, MapPin, Clock } from 'lucide-react';
+import { useState } from 'react';
 
 export default function VillageAbout({ profile }: { profile?: any }) {
     const [activeTab, setActiveTab] = useState<'welcome' | 'history' | 'vision'>('welcome');
@@ -68,6 +68,7 @@ export default function VillageAbout({ profile }: { profile?: any }) {
                         {tabs.map(tab => {
                             const Icon = tab.icon;
                             const active = activeTab === tab.key;
+
                             return (
                                 <button
                                     key={tab.key}

@@ -83,6 +83,7 @@ function categoryBadge(category: string) {
         pengumuman: 'bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300',
         kegiatan: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300',
     };
+
     return map[category] ?? 'bg-stone-100 text-stone-600 dark:bg-stone-800 dark:text-stone-300';
 }
 

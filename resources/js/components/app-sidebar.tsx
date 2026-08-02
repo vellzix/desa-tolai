@@ -1,5 +1,5 @@
-import { Link, usePage } from '@inertiajs/react';
-import { LayoutDashboard, Building2, Users, Newspaper, Sprout, ImageIcon, ShieldCheck, FolderGit2, BookOpen, Globe, MapPin } from 'lucide-react';
+import { Link } from '@inertiajs/react';
+import { LayoutDashboard, Building2, Users, Newspaper, Sprout, ImageIcon, ShieldCheck, Globe, MapPin } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';

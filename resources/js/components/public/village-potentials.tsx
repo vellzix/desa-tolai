@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Sprout, Wheat, Heart, Eye, Users, ChevronRight, Award } from 'lucide-react';
+import { useState } from 'react';
 
 const LogoKabupatenIcon = ({ className }: { className?: string }) => (
     <img src="/Lambang_Kabupaten_Parigi_Moutong.png" className={`${className} object-contain`} alt="Logo" />
@@ -88,6 +88,7 @@ export default function VillagePotentials({ potentials = [] }: { potentials?: an
             const parsedDetails = Array.isArray(p.details) 
                 ? p.details 
                 : (typeof p.details === 'string' ? JSON.parse(p.details) : []);
+
             return {
                 title: p.title,
                 badge: p.badge,
@@ -135,6 +136,7 @@ export default function VillagePotentials({ potentials = [] }: { potentials?: an
                     {economyPotentials.map((item, index) => {
                         const IconComponent = item.icon;
                         const isExpanded = selectedPotential === index;
+
                         return (
                             <div
                                 key={index}
@@ -194,6 +196,7 @@ export default function VillagePotentials({ potentials = [] }: { potentials?: an
                         const IconComponent = item.icon;
                         const globalIndex = index + 10;
                         const isExpanded = selectedPotential === globalIndex;
+
                         return (
                             <div
                                 key={globalIndex}

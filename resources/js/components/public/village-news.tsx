@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { Link } from '@inertiajs/react';
 import { Calendar, Tag, ArrowRight, Search, Eye, Megaphone, Newspaper, Milestone } from 'lucide-react';
+import { useState } from 'react';
 
 interface NewsItem {
     id: number;
@@ -98,6 +98,7 @@ export default function VillageNews({ news = [] }: { news?: any[] }) {
         const parsedTags = Array.isArray(item.tags) 
             ? item.tags 
             : (typeof item.tags === 'string' ? JSON.parse(item.tags) : []);
+
         return {
             id: item.id,
             title: item.title,
@@ -118,6 +119,7 @@ export default function VillageNews({ news = [] }: { news?: any[] }) {
             item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             item.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
             item.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+
         return matchesCategory && matchesSearch;
     });
 
@@ -153,6 +155,7 @@ export default function VillageNews({ news = [] }: { news?: any[] }) {
                     <div className="flex items-center gap-1.5 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto scrollbar-none">
                         {(['all', 'berita', 'pengumuman', 'agenda'] as const).map((cat) => {
                             const Icon = categoryIcons[cat];
+
                             return (
                                 <button
                                     key={cat}

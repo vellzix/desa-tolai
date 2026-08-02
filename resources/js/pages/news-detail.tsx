@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
+import { Calendar, Tag, Eye, ArrowLeft } from 'lucide-react';
 import PublicLayout from '@/layouts/public-layout';
-import { Calendar, Tag, Eye, ArrowLeft, Megaphone, Newspaper, Clock } from 'lucide-react';
 
 interface NewsItem {
     id: number;

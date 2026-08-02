@@ -106,10 +106,34 @@ export default function VillageFooter() {
                     </div>
                 </div>
 
+                {/* KKN Credit Section */}
+                <div className="border-t border-navy-900 pt-8 pb-6 mb-2">
+                    <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                        <img
+                            src="/Logo KKN.png"
+                            alt="Logo KKN 117 Tematik Desa Tolai"
+                            className="h-20 w-20 object-contain shrink-0"
+                        />
+                        <div>
+                            <p className="text-[10px] text-stone-500 uppercase tracking-widest font-semibold mb-1">Dikembangkan oleh</p>
+                            <h4 className="text-stone-200 font-bold text-sm leading-tight mb-1">
+                                KKN 117 Tematik Desa Tolai
+                            </h4>
+                            <p className="text-[11px] text-stone-500 leading-relaxed max-w-sm">
+                                Sains, Teknik &amp; Kesehatan · 2026<br />
+                                Universitas Tadulako · Sulawesi Tengah
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Bottom bar */}
                 <div className="border-t border-navy-900 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-stone-600">
                     <p>&copy; {currentYear} Pemerintah Desa Tolai, Parigi Moutong. Hak Cipta Dilindungi.</p>
-                    <p>Dibuat untuk ketertiban & kesejahteraan masyarakat.</p>
+                    <p className="flex items-center gap-1.5">
+                        <img src="/Logo KKN.png" className="h-4 w-4 object-contain" alt="KKN" />
+                        Website oleh KKN 117 Tematik Desa Tolai
+                    </p>
                 </div>
             </div>
         </footer>

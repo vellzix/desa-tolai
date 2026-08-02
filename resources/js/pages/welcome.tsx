@@ -1,12 +1,12 @@
 import { Head } from '@inertiajs/react';
-import PublicLayout from '@/layouts/public-layout';
-import VillageHero from '@/components/public/village-hero';
 import VillageAbout from '@/components/public/village-about';
+import VillageHamletHeads from '@/components/public/village-hamlet-heads';
+import VillageHero from '@/components/public/village-hero';
+import VillageMap from '@/components/public/village-map';
+import VillageNews from '@/components/public/village-news';
 import VillageOfficials from '@/components/public/village-officials';
 import VillagePotentials from '@/components/public/village-potentials';
-import VillageNews from '@/components/public/village-news';
-import VillageHamletHeads from '@/components/public/village-hamlet-heads';
-import VillageMap from '@/components/public/village-map';
+import PublicLayout from '@/layouts/public-layout';
 
 interface WelcomeProps {
     profile: any;

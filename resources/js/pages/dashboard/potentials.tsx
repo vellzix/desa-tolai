@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import { Head, useForm, router } from '@inertiajs/react';
+import { Plus, Trash2, ChevronRight, ImageIcon, Upload, X } from 'lucide-react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Plus, Trash2, ChevronRight, ImageIcon, Upload, X } from 'lucide-react';
 import { dashboard } from '@/routes';
 
 interface PotentialsProps {
@@ -12,8 +12,14 @@ interface PotentialsProps {
 }
 
 function getImageUrl(path: string | null) {
-    if (!path) return null;
-    if (path.startsWith('http')) return path;
+    if (!path) {
+return null;
+}
+
+    if (path.startsWith('http')) {
+return path;
+}
+
     return `/storage/${path}`;
 }
 
@@ -37,6 +43,7 @@ export default function Potentials({ potentials }: PotentialsProps) {
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] ?? null;
         setData('image', file);
+
         if (file) {
             setImagePreview(URL.createObjectURL(file));
         }
@@ -48,7 +55,10 @@ export default function Potentials({ potentials }: PotentialsProps) {
     };
 
     const handleAddDetail = () => {
-        if (!detailInput.trim()) return;
+        if (!detailInput.trim()) {
+return;
+}
+
         setData('details', [...data.details, detailInput.trim()]);
         setDetailInput('');
     };
@@ -129,6 +139,7 @@ export default function Potentials({ potentials }: PotentialsProps) {
                         {potentials.map((p) => {
                             const details = Array.isArray(p.details) ? p.details : JSON.parse(p.details || '[]');
                             const imgUrl = getImageUrl(p.image_path);
+
                             return (
                                 <div key={p.id} className="bg-white dark:bg-navy-900/40 border border-stone-200 dark:border-navy-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
                                     {/* Gambar */}
@@ -336,7 +347,11 @@ export default function Potentials({ potentials }: PotentialsProps) {
                                     placeholder="Tulis rincian data baru..."
                                     value={detailInput}
                                     onChange={e => setDetailInput(e.target.value)}
-                                    onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); handleAddDetail(); } }}
+                                    onKeyDown={e => {
+ if (e.key === 'Enter') {
+ e.preventDefault(); handleAddDetail(); 
+} 
+}}
                                 />
                                 <Button type="button" onClick={handleAddDetail} className="bg-navy-700 hover:bg-navy-800 text-white rounded shrink-0 cursor-pointer">
                                     Tambah

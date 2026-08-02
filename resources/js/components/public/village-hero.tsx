@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { ArrowDown, Users, Map, Sprout, Award, ChevronRight, Calendar, FileText } from 'lucide-react';
+import { ArrowDown, Users, Map, Sprout, Award, Calendar, FileText } from 'lucide-react';
 
 const LogoKabupatenIcon = ({ className }: { className?: string }) => (
     <img src="/Lambang_Kabupaten_Parigi_Moutong.png" className={`${className} object-contain`} alt="Logo" />
@@ -88,6 +88,7 @@ export default function VillageHero({ statsCards }: VillageHeroProps) {
                     <div className="grid grid-cols-2 gap-3">
                         {stats.map((stat, i) => {
                             const Icon = stat.icon;
+
                             return (
                                 <div key={i} className="border border-white/10 bg-navy-900/50 backdrop-blur-sm p-5">
                                     <div className="flex items-center gap-2 mb-3">
@@ -113,11 +114,15 @@ export default function VillageHero({ statsCards }: VillageHeroProps) {
                         <span className="h-3 w-px bg-stone-700" />
                         <span>Transparansi Informasi</span>
                     </div>
-                    <Link href="/tentang"
-                        className="flex items-center gap-1.5 text-[11px] text-stone-500 hover:text-gold-400 transition-colors cursor-pointer">
-                        <ArrowDown className="h-3.5 w-3.5" />
-                        Jelajahi selengkapnya
-                    </Link>
+                    {/* KKN Badge */}
+                    <div className="flex items-center gap-3.5 px-4 py-2.5 border border-white/15 bg-navy-900/70 backdrop-blur-sm rounded-sm">
+                        <img src="/Logo KKN.png" className="h-14 w-14 object-contain shrink-0" alt="Logo KKN 117" />
+                        <div className="text-stone-400 leading-snug">
+                            <div className="text-[10px] font-bold text-stone-200 uppercase tracking-widest mb-0.5">KKN 117 Tematik</div>
+                            <div className="text-[11px] text-stone-300 font-medium">Desa Tolai · 2026</div>
+                            <div className="text-[10px] text-stone-500 mt-0.5">Sains, Teknik &amp; Kesehatan</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

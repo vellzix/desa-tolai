@@ -1,9 +1,9 @@
+import { Head, useForm } from '@inertiajs/react';
+import { Trash2, Save } from 'lucide-react';
 import { useState } from 'react';
-import { Head, useForm, router } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Trash2, Save } from 'lucide-react';
 import { dashboard } from '@/routes';
 
 interface ProfileProps {
@@ -21,6 +21,7 @@ export default function Profile({ profile }: ProfileProps) {
     const defaultMissions = profile?.missions ? (Array.isArray(profile.missions) ? profile.missions : JSON.parse(profile.missions)) : [];
     
     let initialStatsCards = defaultStatsCards;
+
     if (profile?.stats_cards) {
         initialStatsCards = typeof profile.stats_cards === 'string' ? JSON.parse(profile.stats_cards) : profile.stats_cards;
     }
@@ -43,7 +44,10 @@ export default function Profile({ profile }: ProfileProps) {
     const [newMission, setNewMission] = useState('');
 
     const handleAddMission = () => {
-        if (!newMission.trim()) return;
+        if (!newMission.trim()) {
+return;
+}
+
         setData('missions', [...data.missions, newMission.trim()]);
         setNewMission('');
     };

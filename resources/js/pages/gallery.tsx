@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
-import PublicLayout from '@/layouts/public-layout';
 import VillageGallery from '@/components/public/village-gallery';
+import PublicLayout from '@/layouts/public-layout';
 
 interface GalleryPageProps {
     galleries: any[];

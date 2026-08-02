@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { Link, usePage } from '@inertiajs/react';
-import { useAppearance } from '@/hooks/use-appearance';
 import { Menu, X, Sun, Moon, ShieldCheck, ChevronRight, Phone, Clock } from 'lucide-react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { useAppearance } from '@/hooks/use-appearance';
 import { login, dashboard } from '@/routes';
 
 interface NavItem {
@@ -25,7 +25,10 @@ export default function VillageNav() {
     const [isOpen, setIsOpen] = useState(false);
 
     const isActive = (itemHref: string) => {
-        if (itemHref === '/') return url === '/' || url === '';
+        if (itemHref === '/') {
+return url === '/' || url === '';
+}
+
         return url.startsWith(itemHref);
     };
 
@@ -78,6 +81,7 @@ export default function VillageNav() {
                     <nav className="hidden md:flex items-center">
                         {navItems.map((item) => {
                             const active = isActive(item.href);
+
                             return (
                                 <Link
                                     key={item.label}
@@ -148,6 +152,7 @@ export default function VillageNav() {
                     <div className="px-4 py-3 space-y-0.5">
                         {navItems.map((item) => {
                             const active = isActive(item.href);
+
                             return (
                                 <Link key={item.label} href={item.href} onClick={() => setIsOpen(false)}
                                     className={`flex items-center px-3 py-2.5 text-sm font-medium rounded transition-colors cursor-pointer ${

@@ -1,6 +1,6 @@
 import { Head } from '@inertiajs/react';
-import PublicLayout from '@/layouts/public-layout';
 import VillageNews from '@/components/public/village-news';
+import PublicLayout from '@/layouts/public-layout';
 
 interface NewsPageProps {
     news: any[];

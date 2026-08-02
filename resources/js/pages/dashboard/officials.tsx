@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import { Head, useForm, router } from '@inertiajs/react';
+import { Plus, Trash2, Edit3 } from 'lucide-react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Plus, Trash2, Edit3 } from 'lucide-react';
 import { dashboard } from '@/routes';
 
 interface OfficialsProps {
@@ -15,7 +15,7 @@ export default function Officials({ officials }: OfficialsProps) {
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [editingOfficial, setEditingOfficial] = useState<any | null>(null);
 
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, reset } = useForm({
         name: '',
         role: '',
         nip: '',
@@ -30,7 +30,10 @@ export default function Officials({ officials }: OfficialsProps) {
     const [newDuty, setNewDuty] = useState('');
 
     const handleAddDuty = () => {
-        if (!newDuty.trim()) return;
+        if (!newDuty.trim()) {
+return;
+}
+
         setData('duty', [...data.duty, newDuty.trim()]);
         setNewDuty('');
     };
@@ -64,6 +67,7 @@ export default function Officials({ officials }: OfficialsProps) {
 
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();
+
         if (editingOfficial) {
             post(`/dashboard/officials/${editingOfficial.id}`, {
                 onSuccess: () => {

@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import { Head, useForm, router } from '@inertiajs/react';
+import { Plus, Trash2, Edit3 } from 'lucide-react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Plus, Trash2, Edit3 } from 'lucide-react';
 import { dashboard } from '@/routes';
 
 interface NewsProps {
@@ -28,10 +28,14 @@ export default function News({ news }: NewsProps) {
     const [tagInput, setTagInput] = useState('');
 
     const handleAddTag = () => {
-        if (!tagInput.trim()) return;
+        if (!tagInput.trim()) {
+return;
+}
+
         if (!data.tags.includes(tagInput.trim())) {
             setData('tags', [...data.tags, tagInput.trim()]);
         }
+
         setTagInput('');
     };
 
@@ -62,6 +66,7 @@ export default function News({ news }: NewsProps) {
 
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();
+
         if (editingNews) {
             post(`/dashboard/news/${editingNews.id}`, {
                 onSuccess: () => {
@@ -122,6 +127,7 @@ export default function News({ news }: NewsProps) {
                                 <tbody className="divide-y divide-stone-200 dark:divide-navy-800/60">
                                     {news.map((item) => {
                                         const tags = Array.isArray(item.tags) ? item.tags : JSON.parse(item.tags || '[]');
+
                                         return (
                                             <tr key={item.id} className="hover:bg-stone-50/50 dark:hover:bg-navy-950/10">
                                                 <td className="p-3 whitespace-nowrap text-stone-500">{item.date}</td>

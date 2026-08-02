@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import VillageNav from '@/components/public/village-nav';
+import type { ReactNode } from 'react';
 import VillageFooter from '@/components/public/village-footer';
+import VillageNav from '@/components/public/village-nav';
 
 interface PublicLayoutProps {
     children: ReactNode;

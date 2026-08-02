@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Star, ShieldCheck, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 interface Official {

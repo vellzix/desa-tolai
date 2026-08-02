@@ -1,5 +1,5 @@
+import { MapPin, ExternalLink, ShieldAlert, Navigation } from 'lucide-react';
 import React from 'react';
-import { Map, MapPin, ExternalLink, ShieldAlert, Navigation } from 'lucide-react';
 
 export default function VillageMap() {
     const borders = [

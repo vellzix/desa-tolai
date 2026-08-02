@@ -1,8 +1,8 @@
 import { Head } from '@inertiajs/react';
-import PublicLayout from '@/layouts/public-layout';
 import VillageAbout from '@/components/public/village-about';
-import VillageOfficials from '@/components/public/village-officials';
 import VillageHamletHeads from '@/components/public/village-hamlet-heads';
+import VillageOfficials from '@/components/public/village-officials';
+import PublicLayout from '@/layouts/public-layout';
 
 interface AboutPageProps {
     profile: any;

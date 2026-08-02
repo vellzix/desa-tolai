@@ -1,9 +1,4 @@
-import { useState } from 'react';
 import { Head, useForm, router } from '@inertiajs/react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { 
     Building, 
     Users, 
@@ -13,17 +8,16 @@ import {
     Plus, 
     Trash2, 
     Edit3, 
-    Upload, 
     Save, 
-    PlusCircle,
     ChevronRight,
-    MapPin,
-    Phone,
-    Mail,
-    Clock,
     ShieldCheck,
     UserPlus
 } from 'lucide-react';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { dashboard } from '@/routes';
 
 interface DashboardProps {
@@ -164,7 +158,10 @@ function ProfileManager({ profile }: { profile: any }) {
     const [newMission, setNewMission] = useState('');
 
     const handleAddMission = () => {
-        if (!newMission.trim()) return;
+        if (!newMission.trim()) {
+return;
+}
+
         setData('missions', [...data.missions, newMission.trim()]);
         setNewMission('');
     };
@@ -365,7 +362,7 @@ function OfficialsManager({ officials }: { officials: any[] }) {
     const [isAddOpen, setIsAddOpen] = useState(false);
     const [editingOfficial, setEditingOfficial] = useState<any | null>(null);
 
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, reset } = useForm({
         name: '',
         role: '',
         nip: '',
@@ -380,7 +377,10 @@ function OfficialsManager({ officials }: { officials: any[] }) {
     const [newDuty, setNewDuty] = useState('');
 
     const handleAddDuty = () => {
-        if (!newDuty.trim()) return;
+        if (!newDuty.trim()) {
+return;
+}
+
         setData('duty', [...data.duty, newDuty.trim()]);
         setNewDuty('');
     };
@@ -414,6 +414,7 @@ function OfficialsManager({ officials }: { officials: any[] }) {
 
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();
+
         if (editingOfficial) {
             post(`/dashboard/officials/${editingOfficial.id}`, {
                 onSuccess: () => {
@@ -599,10 +600,14 @@ function NewsManager({ news }: { news: any[] }) {
     const [tagInput, setTagInput] = useState('');
 
     const handleAddTag = () => {
-        if (!tagInput.trim()) return;
+        if (!tagInput.trim()) {
+return;
+}
+
         if (!data.tags.includes(tagInput.trim())) {
             setData('tags', [...data.tags, tagInput.trim()]);
         }
+
         setTagInput('');
     };
 
@@ -633,6 +638,7 @@ function NewsManager({ news }: { news: any[] }) {
 
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();
+
         if (editingNews) {
             post(`/dashboard/news/${editingNews.id}`, {
                 onSuccess: () => {
@@ -682,6 +688,7 @@ function NewsManager({ news }: { news: any[] }) {
                     <tbody className="divide-y divide-stone-200 dark:divide-navy-800/60">
                         {news.map((item) => {
                             const tags = Array.isArray(item.tags) ? item.tags : JSON.parse(item.tags || '[]');
+
                             return (
                                 <tr key={item.id} className="hover:bg-stone-50/50 dark:hover:bg-navy-950/10">
                                     <td className="p-3 whitespace-nowrap text-stone-500">{item.date}</td>
@@ -839,7 +846,7 @@ function PotentialsManager({ potentials }: { potentials: any[] }) {
     const [isOpen, setIsOpen] = useState(false);
     const [editingPotential, setEditingPotential] = useState<any | null>(null);
 
-    const { data, setData, post, put, processing, errors, reset } = useForm({
+    const { data, setData, post, put, processing, reset } = useForm({
         title: '',
         badge: '',
         description: '',
@@ -851,7 +858,10 @@ function PotentialsManager({ potentials }: { potentials: any[] }) {
     const [detailInput, setDetailInput] = useState('');
 
     const handleAddDetail = () => {
-        if (!detailInput.trim()) return;
+        if (!detailInput.trim()) {
+return;
+}
+
         setData('details', [...data.details, detailInput.trim()]);
         setDetailInput('');
     };
@@ -882,6 +892,7 @@ function PotentialsManager({ potentials }: { potentials: any[] }) {
 
     const handleSave = (e: React.FormEvent) => {
         e.preventDefault();
+
         if (editingPotential) {
             put(`/dashboard/potentials/${editingPotential.id}`, {
                 onSuccess: () => {
@@ -919,6 +930,7 @@ function PotentialsManager({ potentials }: { potentials: any[] }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {potentials.map((p) => {
                     const details = Array.isArray(p.details) ? p.details : JSON.parse(p.details || '[]');
+
                     return (
                         <div key={p.id} className="bg-stone-50 dark:bg-navy-950/20 border border-stone-200 dark:border-navy-800 p-4 rounded-lg flex flex-col justify-between">
                             <div>

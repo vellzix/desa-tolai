@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
 import { Head, useForm, router } from '@inertiajs/react';
+import { Pencil, Trash2, Plus, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
-import { Card, CardContent } from '@/components/ui/card';
-import { Pencil, Trash2, Plus, Image as ImageIcon, MapPin } from 'lucide-react';
 import { dashboard } from '@/routes';
 
 interface HamletHeadsProps {
@@ -49,6 +48,7 @@ export default function HamletHeads({ hamletHeads }: HamletHeadsProps) {
 
     const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
+
         if (file) {
             setData('photo', file);
             const reader = new FileReader();
