@@ -21,16 +21,18 @@ export default function News({ news }: NewsProps) {
         date: '',
         excerpt: '',
         news_image_file: null as any,
+        additional_images_files: [] as File[],
         content: '',
         tags: [] as string[],
+        existing_additional_images: [] as string[],
     });
 
     const [tagInput, setTagInput] = useState('');
 
     const handleAddTag = () => {
         if (!tagInput.trim()) {
-return;
-}
+            return;
+        }
 
         if (!data.tags.includes(tagInput.trim())) {
             setData('tags', [...data.tags, tagInput.trim()]);
@@ -52,14 +54,17 @@ return;
     const handleOpenEdit = (item: any) => {
         setEditingNews(item);
         const parsedTags = Array.isArray(item.tags) ? item.tags : JSON.parse(item.tags || '[]');
+        const parsedAdditionalImages = Array.isArray(item.additional_images) ? item.additional_images : JSON.parse(item.additional_images || '[]');
         setData({
             title: item.title,
             category: item.category,
             date: item.date,
             excerpt: item.excerpt,
             news_image_file: null,
+            additional_images_files: [],
             content: item.content || '',
             tags: parsedTags,
+            existing_additional_images: parsedAdditionalImages,
         });
         setIsOpen(true);
     };
@@ -223,7 +228,7 @@ return;
                                 {errors.excerpt && <span className="text-[10px] text-red-500">{errors.excerpt}</span>}
                             </div>
                             <div className="space-y-1">
-                                <Label htmlFor="news_image_file">Foto / Gambar Berita (Max 3MB, Opsional)</Label>
+                                <Label htmlFor="news_image_file">Gambar Utama Berita (Max 3MB, Opsional)</Label>
                                 <div className="flex gap-3 items-center">
                                     {editingNews?.image_path && (
                                         <img src={editingNews.image_path} className="h-12 w-16 object-cover border" alt="Thumbnail" />
@@ -237,6 +242,43 @@ return;
                                 {errors.news_image_file && <span className="text-[10px] text-red-500">{errors.news_image_file}</span>}
                             </div>
                         </div>
+
+                        <div className="space-y-1">
+                            <Label htmlFor="additional_images_files">Gambar Tambahan / Pendukung (Bisa Pilih Banyak, Max 3MB/file, Opsional)</Label>
+                            <Input 
+                                id="additional_images_files" 
+                                type="file" 
+                                multiple 
+                                onChange={e => {
+                                    const files = Array.from(e.target.files || []);
+                                    setData('additional_images_files', files as any);
+                                }} 
+                            />
+                            {errors.additional_images_files && <span className="text-[10px] text-red-500">{errors.additional_images_files}</span>}
+                        </div>
+
+                        {/* Preview and Remove Existing Additional Images */}
+                        {data.existing_additional_images && data.existing_additional_images.length > 0 && (
+                            <div className="space-y-2 border-t border-stone-200 dark:border-navy-800 pt-3">
+                                <Label className="font-semibold text-navy-900 dark:text-white">Gambar Pendukung Saat Ini (Klik ikon sampah untuk menghapus)</Label>
+                                <div className="grid grid-cols-4 sm:grid-cols-6 gap-3">
+                                    {data.existing_additional_images.map((imgUrl, idx) => (
+                                        <div key={idx} className="relative aspect-[4/3] rounded border border-stone-200 dark:border-navy-800 overflow-hidden group">
+                                            <img src={imgUrl} className="w-full h-full object-cover" alt={`Additional ${idx}`} />
+                                            <button 
+                                                type="button" 
+                                                onClick={() => {
+                                                    setData('existing_additional_images', data.existing_additional_images.filter(img => img !== imgUrl));
+                                                }}
+                                                className="absolute inset-0 bg-black/60 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                                            >
+                                                <Trash2 className="h-5 w-5 text-red-400" />
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         <div className="space-y-1">
                             <Label htmlFor="news_content">Konten Lengkap Berita</Label>

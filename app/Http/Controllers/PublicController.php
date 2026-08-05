@@ -63,4 +63,13 @@ class PublicController extends Controller
             'item' => $newsItem,
         ]);
     }
+
+    public function sitemap()
+    {
+        $news = VillageNews::orderBy('updated_at', 'desc')->get();
+        
+        return response()
+            ->view('sitemap', compact('news'))
+            ->header('Content-Type', 'text/xml');
+    }
 }

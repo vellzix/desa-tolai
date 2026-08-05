@@ -10,6 +10,7 @@ Route::get('/potensi', [PublicController::class, 'potentials'])->name('potential
 Route::get('/kabar', [PublicController::class, 'news'])->name('news');
 Route::get('/kabar/{id}', [PublicController::class, 'newsShow'])->name('news.show');
 Route::get('/galeri', [PublicController::class, 'gallery'])->name('gallery');
+Route::get('/sitemap.xml', [PublicController::class, 'sitemap'])->name('sitemap');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');

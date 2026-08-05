@@ -32,6 +32,18 @@ class FortifyServiceProvider extends ServiceProvider
         $this->configureActions();
         $this->configureViews();
         $this->configureRateLimiting();
+
+        // Kustomisasi email reset password agar antipam dan profesional
+        \Illuminate\Auth\Notifications\ResetPassword::toMailUsing(function ($notifiable, $token) {
+            $url = url(route('password.reset', [
+                'token' => $token,
+                'email' => $notifiable->getEmailForPasswordReset(),
+            ], false));
+
+            return (new \Illuminate\Notifications\Messages\MailMessage)
+                ->subject('Instruksi Pemulihan Kata Sandi Akun Desa Tolai')
+                ->view('emails.reset-password', ['url' => $url]);
+        });
     }
 
     /**

@@ -12,6 +12,7 @@ class VillageNews extends Model
         'date',
         'excerpt',
         'image_path',
+        'additional_images',
         'content',
         'tags',
         'views',
@@ -19,5 +20,6 @@ class VillageNews extends Model
 
     protected $casts = [
         'tags' => 'array',
+        'additional_images' => 'array',
     ];
 }

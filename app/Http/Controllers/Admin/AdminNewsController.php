@@ -17,6 +17,8 @@ class AdminNewsController extends Controller
             'date' => 'required|string|max:100',
             'excerpt' => 'required|string',
             'news_image_file' => 'nullable|image|max:3072',
+            'additional_images_files' => 'nullable|array',
+            'additional_images_files.*' => 'image|max:3072',
             'content' => 'nullable|string',
             'tags' => 'required|array',
         ]);
@@ -27,12 +29,21 @@ class AdminNewsController extends Controller
             $imagePath = '/storage/' . $path;
         }
 
+        $additionalImages = [];
+        if ($request->hasFile('additional_images_files')) {
+            foreach ($request->file('additional_images_files') as $file) {
+                $path = $file->store('kabar', 'public');
+                $additionalImages[] = '/storage/' . $path;
+            }
+        }
+
         VillageNews::create([
             'title' => $data['title'],
             'category' => $data['category'],
             'date' => $data['date'],
             'excerpt' => $data['excerpt'],
             'image_path' => $imagePath,
+            'additional_images' => $additionalImages,
             'content' => $data['content'] ?? $data['excerpt'],
             'tags' => $data['tags'],
             'views' => 0,
@@ -51,8 +62,11 @@ class AdminNewsController extends Controller
             'date' => 'required|string|max:100',
             'excerpt' => 'required|string',
             'news_image_file' => 'nullable|image|max:3072',
+            'additional_images_files' => 'nullable|array',
+            'additional_images_files.*' => 'image|max:3072',
             'content' => 'nullable|string',
             'tags' => 'required|array',
+            'existing_additional_images' => 'nullable|array',
         ]);
 
         $imagePath = $news->image_path;
@@ -65,12 +79,33 @@ class AdminNewsController extends Controller
             $imagePath = '/storage/' . $path;
         }
 
+        // Clean up deleted additional images
+        $currentAdditional = $news->additional_images ?? [];
+        $keptAdditional = $request->input('existing_additional_images', []);
+        
+        $deletedImages = array_diff($currentAdditional, $keptAdditional);
+        foreach ($deletedImages as $deletedImage) {
+            $relativePath = str_replace('/storage/', '', $deletedImage);
+            if (Storage::disk('public')->exists($relativePath)) {
+                Storage::disk('public')->delete($relativePath);
+            }
+        }
+
+        $additionalImages = $keptAdditional;
+        if ($request->hasFile('additional_images_files')) {
+            foreach ($request->file('additional_images_files') as $file) {
+                $path = $file->store('kabar', 'public');
+                $additionalImages[] = '/storage/' . $path;
+            }
+        }
+
         $news->update([
             'title' => $data['title'],
             'category' => $data['category'],
             'date' => $data['date'],
             'excerpt' => $data['excerpt'],
             'image_path' => $imagePath,
+            'additional_images' => $additionalImages,
             'content' => $data['content'] ?? $data['excerpt'],
             'tags' => $data['tags'],
         ]);
@@ -82,9 +117,19 @@ class AdminNewsController extends Controller
     {
         $news = VillageNews::findOrFail($id);
         
-        // Delete image from storage if it exists
+        // Delete main image from storage if it exists
         if ($news->image_path && Storage::disk('public')->exists(str_replace('/storage/', '', $news->image_path))) {
             Storage::disk('public')->delete(str_replace('/storage/', '', $news->image_path));
+        }
+
+        // Delete all additional images from storage if they exist
+        if ($news->additional_images) {
+            foreach ($news->additional_images as $image) {
+                $relativePath = str_replace('/storage/', '', $image);
+                if (Storage::disk('public')->exists($relativePath)) {
+                    Storage::disk('public')->delete($relativePath);
+                }
+            }
         }
 
         $news->delete();

@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
-import { Calendar, Tag, Eye, ArrowLeft } from 'lucide-react';
+import { Calendar, Tag, Eye, ArrowLeft, ImageIcon } from 'lucide-react';
 import PublicLayout from '@/layouts/public-layout';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 
 interface NewsItem {
     id: number;
@@ -9,6 +11,7 @@ interface NewsItem {
     date: string;
     excerpt: string;
     image_path?: string;
+    additional_images?: any;
     content: string;
     tags: string[];
     views: number;
@@ -19,9 +22,15 @@ interface NewsDetailPageProps {
 }
 
 export default function NewsDetailPage({ item }: NewsDetailPageProps) {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
     const tags = Array.isArray(item.tags) 
         ? item.tags 
         : (typeof item.tags === 'string' ? JSON.parse(item.tags) : []);
+
+    const additionalImages: string[] = Array.isArray(item.additional_images)
+        ? item.additional_images
+        : (typeof item.additional_images === 'string' ? JSON.parse(item.additional_images || '[]') : []);
 
     const categoryBadges = {
         berita: 'bg-blue-100 border-blue-200 text-blue-800 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-400',
@@ -95,6 +104,27 @@ export default function NewsDetailPage({ item }: NewsDetailPageProps) {
                             {item.content || item.excerpt}
                         </div>
 
+                        {/* Additional Images Gallery */}
+                        {additionalImages.length > 0 && (
+                            <div className="p-6 sm:p-10 border-b border-stone-100 dark:border-navy-800/60 bg-stone-50/20 dark:bg-navy-950/5">
+                                <div className="flex items-center gap-2 mb-6">
+                                    <ImageIcon className="h-4.5 w-4.5 text-navy-700 dark:text-gold-500" />
+                                    <h3 className="text-sm font-bold uppercase tracking-wider text-navy-900 dark:text-white">Dokumentasi &amp; Foto Terkait</h3>
+                                </div>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                    {additionalImages.map((imgUrl, idx) => (
+                                        <div 
+                                            key={idx} 
+                                            onClick={() => setSelectedImage(imgUrl)}
+                                            className="aspect-[4/3] rounded border border-stone-200 dark:border-navy-800 overflow-hidden shadow-sm hover:shadow hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 cursor-pointer"
+                                        >
+                                            <img src={imgUrl} className="w-full h-full object-cover" alt={`Dokumentasi ${idx + 1}`} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                         {/* Article Footer */}
                         <div className="p-6 sm:p-10 bg-stone-50/50 dark:bg-navy-950/20 flex flex-wrap items-center gap-2">
                             <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 mr-2">Tags:</span>
@@ -111,6 +141,21 @@ export default function NewsDetailPage({ item }: NewsDetailPageProps) {
                     </article>
                 </div>
             </div>
+
+            {/* Image Lightbox Dialog */}
+            <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+                <DialogContent className="max-w-4xl bg-transparent border-none text-white p-0 shadow-none gap-0 flex items-center justify-center">
+                    {selectedImage && (
+                        <div className="relative max-h-[85vh] max-w-full overflow-hidden flex items-center justify-center bg-black/90 p-1 rounded-lg">
+                            <img
+                                src={selectedImage}
+                                alt="Dokumentasi Perbesar"
+                                className="max-h-[80vh] max-w-full object-contain"
+                            />
+                        </div>
+                    )}
+                </DialogContent>
+            </Dialog>
         </PublicLayout>
     );
 }
